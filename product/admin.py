@@ -53,7 +53,7 @@ class SliderAdmin(admin.ModelAdmin):
         'alt_text',
         'link',
         'caption',
-        'sort_by'
+        'rank'
     ]
 
 

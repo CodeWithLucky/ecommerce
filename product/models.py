@@ -49,7 +49,7 @@ class Slider(models.Model):
     alt_text = models.CharField(max_length=125)
     link = models.URLField(max_length=200)
     caption = models.CharField(max_length=200)
-    sort_by = models.CharField(max_length=50)
+    rank = models.CharField(max_length=50)
     status = models.ForeignKey(Status, on_delete=models.CASCADE)
 
     def __str__(self):
