@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from django.utils import timezone
 
 # Create your models here.
 
@@ -31,7 +32,7 @@ class Tag(models.Model):
         return self.title
 
 class SubCategory(models.Model):
-    parent_category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    parent_category = models.ForeignKey(Category,related_name='subcategories',on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     description = models.CharField( max_length=255)
     images = models.ImageField(upload_to='category_images', max_length=500, null = True, blank = True)
@@ -103,6 +104,8 @@ class Product(models.Model):
     image = models.ImageField(upload_to='product_image/', max_length=500, null = True, blank= True)
     short_description = models.TextField()
     long_description = models.TextField()
+    added_at = models.DateTimeField(default=timezone.now)
+    attribute = models.ManyToManyField(Attribute, blank = True)
 
     def __str__(self):
         return self.title
@@ -111,3 +114,4 @@ class Product(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super(Product, self).save(*args, **kwargs)
+

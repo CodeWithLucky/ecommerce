@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block header %} 
+    {% include "Snippet/topbar.html" %}
+    {% include "Snippet/banner.html" %} 
+    {% include "Snippet/navbar.html" %}
+        <div class="container">
+        <!-- Searchbar -->
+        {% include "Snippet/searchbar.html" %}
+        <!-- ./Searchbar -->
+        </div>
+{% endblock header %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="block block-breadcrumbs">
+            <ul>
+                <li class="home">
+                    <a href="#"><i class="fa fa-home"></i></a>
+                    <span></span>
+                </li>
+                <li>Checkout</li>
+            </ul>
+        </div>
+        <div class="main-page">
+            
+        
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock content %}
+
+{% block footer %}
+        {% include "Snippet/footer.html" %}
+{% endblock footer %}

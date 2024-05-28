@@ -79,10 +79,10 @@
 	left: 0;
 }
 .box-header {
-  border: 1px solid #eaeaea;
-  padding: 8px 0px;
-  background: #3c4193;
-  min-height: 50px;
+border: 1px solid #eaeaea;
+padding: 8px 0px;
+background: #3c4193;
+min-height: 50px;
 }
 
 /*-------------------
@@ -248,7 +248,7 @@
 	border-radius: 90%;
 	margin-top: 2px;
 	margin-right: 2px;
-	background: #5a88ca url('../images/cart-icon.png') no-repeat center center;
+	background: #5a88ca url('../../edo/cart-icon.png') no-repeat center center;
 }
 .block-wrap-cart .block-mini-cart{
 	position: absolute;

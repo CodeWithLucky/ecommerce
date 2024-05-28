@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block header %} 
+    {% include "Snippet/topbar.html" %}
+    {% include "Snippet/banner.html" %} 
+    {% include "Snippet/navbar.html" %}
+        <div class="container">
+        <!-- Searchbar -->
+        {% include "Snippet/searchbar.html" %}
+        <!-- ./Searchbar -->
+        </div>
+{% endblock header %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="block block-breadcrumbs">
+            <ul>
+                <li class="home">
+                    <a href="#"><i class="fa fa-home"></i></a>
+                    <span></span>
+                </li>
+                <li>Cart</li>
+            </ul>
+        </div>
+        <div class="main-page">
+            <h1 class="page-title">Shopping Cart Summary</h1>
+            <div class="page-content page-order">
+                <ul class="step">
+                    <li class="current-step"><span>01. Summary</span></li>
+                    <li><span>02. Sign in</span></li>
+                    <li><span>03. Address</span></li>
+                    <li><span>04. Shipping</span></li>
+                    <li><span>05. Payment</span></li>
+                </ul>
+                <div class="heading-counter warning">Your shopping cart contains:
+                    <span id="cart_count_info">0 Product</span>
+                </div>
+                <div class="order-detail-content">
+                    <table class=" table table-bordered table-responsive cart_summary">
+<thead>
+<tr>
+    <th class="cart_product">Product</th>
+    <th>Description</th>
+    <th>Avail.</th>
+    <th>Unit price</th>
+    <th>Qty</th>
+    <th>Total</th>
+    <th class="action"><i class="fa fa-trash-o"></i></th>
+</tr>
+</thead>
+<tbody>
+        <tr>
+<td colspan="2" rowspan="2"></td>
+<td colspan="3">No items in the cart</td>
+<td colspan="2">&nbsp;</td>
+</tr>
+    </tbody>
+<tfoot>
+<tr id="no_data">
+    <td colspan="2" rowspan="2"></td>
+    <td colspan="3">&nbsp;</td>
+    <td colspan="2">&nbsp;</td>
+</tr>
+<tr>
+    <td colspan="3"><strong>Total</strong></td>
+    <td colspan="2"><strong><span id="cart_total_amount">Rs. 0</span></strong></td>
+</tr>
+</tfoot>
+</table>
+
+                    <div class="cart_navigation">
+                        <a class="button" href="index.html"><i class="fa fa-angle-left"></i> Continue shopping </a>
+                        <a class="button pull-right" href="cart.html">Proceed to checkout <i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock content %}
+{% block footer %}
+        {% include "Snippet/footer.html" %}
+{% endblock footer %}

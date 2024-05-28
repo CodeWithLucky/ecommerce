@@ -695,7 +695,7 @@ body{
     overflow: hidden;
   }
   .products .product-container:hover .product-right{
-   bottom: 0;
+  bottom: 0;
   }
   .products .product-container:hover .product-thumb .product-img:before{
     opacity: 1;
