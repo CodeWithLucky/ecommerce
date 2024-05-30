@@ -58,3 +58,7 @@ class RoleListView(View):
     def get(self, request):
         roles = Role.objects.all()
         return render(request, 'role_list.html', {'roles': roles})
+
+
+# def login_view(request):
+#     return r    

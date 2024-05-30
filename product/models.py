@@ -103,6 +103,7 @@ class Product(models.Model):
     long_description = models.TextField()
     added_at = models.DateTimeField(default=timezone.now)
     attribute = models.ManyToManyField(Attribute, blank=True)
+    views = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.title

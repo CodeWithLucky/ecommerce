@@ -88,14 +88,15 @@
             <div class="block-title-text text-lg">products</div>
         </div>
     </div>
+    {% for product in recommend_products %}
     <div class="block-inner">
         <ul class="products kt-owl-carousel" data-items="1" data-autoplay="true" data-loop="true" data-nav="true">
                                                 <li class="product ">
     <div class="product-container">
         <div class="product-left">
             <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/hikvision/4-channel-nvr-ds-7104ni-q1m">
-                    <img src="{% static "images/product/300_300_6862_4 Channel NVR DS-7104NI-Q1-M.jpg" %}" alt="Product">
+                <a class="product-img" href="">
+                    <img src="{{product.image.url}}" alt="Product">
                 </a>
                 <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
             </div>
@@ -106,13 +107,13 @@
         </div>
         <div class="product-right">
             <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/hikvision/4-channel-nvr-ds-7104ni-q1m">
-                    4 Channel NVR DS-7104NI-Q1/M
+                <a href="">
+                    {{product.title}}
                 </a>
             </div>
             <div class="price-box">
-                <span class="product-price">Rs. 8120 </span>
-                <span class="product-price-old">Rs. 9020</span>
+                <span class="product-price">Rs. {{product.new_price}} </span>
+                <span class="product-price-old">Rs. {{product.old_price}}</span>
             </div>
             <div class="product-star">
                 <i class="fa fa-star-o"></i>
@@ -138,440 +139,9 @@
         </div>
     </div>
 </li>
-                                    <li class="product ">
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/hikvision/32-channel-nvr-ds-7632ni-k2">
-                    <img src="{% static "images/product/300_300_9373_32 Channel NVR DS-7632NI-K2.jpg" %}" alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/hikvision/32-channel-nvr-ds-7632ni-k2">
-                    32 Channel NVR DS-7632NI-K2
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. 32770 </span>
-                <span class="product-price-old">Rs. 36410</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-            </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="32-channel-nvr-ds-7632ni-k2" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="32-channel-nvr-ds-7632ni-k2">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
-                                    <li class="product ">
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/hikvision/64-channel-raid-nvr-ds-9664ni-i8">
-                    <img src="{% static "images/product/300_300_5455_DS-9664NI-I8.jpg" %}" alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/hikvision/64-channel-raid-nvr-ds-9664ni-i8">
-                    64 Channel RAID NVR DS-9664NI-I8
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. 186500 </span>
-                <span class="product-price-old">Rs. 207220</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-            </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="64-channel-raid-nvr-ds-9664ni-i8" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="64-channel-raid-nvr-ds-9664ni-i8">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
-                                    <li class="product ">
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/hikvision/8-mp-motorized-varifocal-bullet-camera-ds-2cd3685g0-izs">
-                    <img src="https://zenithsuppliers.com.np/images/product/300_300_3615_DS-2CD3685G0-IZS.png" alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/hikvision/8-mp-motorized-varifocal-bullet-camera-ds-2cd3685g0-izs">
-                    8 MP Motorized Varifocal Bullet Camera DS-2CD3685G0-IZS
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. 35150 </span>
-                <span class="product-price-old">Rs. 39050</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-            </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="8-mp-motorized-varifocal-bullet-camera-ds-2cd3685g0-izs" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="8-mp-motorized-varifocal-bullet-camera-ds-2cd3685g0-izs">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
-                                    <li class="product ">
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/hikvision/4-mp-colorvu-ip-bullet-camera-ds-2cd2t47g2-l-4-mm">
-                    <img src="https://zenithsuppliers.com.np/images/product/300_300_2626_1 Camera DS-2CD2T47G2-L.png" alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/hikvision/4-mp-colorvu-ip-bullet-camera-ds-2cd2t47g2-l-4-mm">
-                    4 MP ColorVu IP Bullet Camera DS-2CD2T47G2-L (4 mm)
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. 18745 </span>
-                <span class="product-price-old">Rs. 20825</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-            </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="4-mp-colorvu-ip-bullet-camera-ds-2cd2t47g2-l-4-mm" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="4-mp-colorvu-ip-bullet-camera-ds-2cd2t47g2-l-4-mm">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
-                                    <li class="product ">
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/dell/dell-inspirion-3501-i7-11th-gen-8gb-ram-512gb-ssd-nvidia-mx330-156-fhd-display">
-                    <img src="https://zenithsuppliers.com.np/images/product/300_300_8368_dell-vostro-3500-price-nepal-cheap-i7-laptop.jpg" alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/dell/dell-inspirion-3501-i7-11th-gen-8gb-ram-512gb-ssd-nvidia-mx330-156-fhd-display">
-                    Dell Inspirion 3501 i7 11th Gen / 8GB RAM / 512GB SSD / Nvidia MX330 / 15.6&quot; FHD Display
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. 114000 </span>
-                <span class="product-price-old">Rs. 118000</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-            </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="dell-inspirion-3501-i7-11th-gen-8gb-ram-512gb-ssd-nvidia-mx330-156-fhd-display" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="dell-inspirion-3501-i7-11th-gen-8gb-ram-512gb-ssd-nvidia-mx330-156-fhd-display">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
-                                    <li class="product ">
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/hikvision/ds-2cd2t47g2-l-4-mm">
-                    <img src="https://zenithsuppliers.com.np/images/product/300_300_6522_DS-2T47G2-L.jpg" alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/hikvision/ds-2cd2t47g2-l-4-mm">
-                    DS-2CD2T47G2-L (4 mm)
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. 18745 </span>
-                <span class="product-price-old">Rs. 20825</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-            </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="ds-2cd2t47g2-l-4-mm" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="ds-2cd2t47g2-l-4-mm">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
-                                    <li class="product ">
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/hikvision/16-channel-4k-nvr-ds-7616ni-q1">
-                    <img src="https://zenithsuppliers.com.np/images/product/300_300_3026_6 Channel 4K NVR DS-7616NI-Q1.jpg" alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/hikvision/16-channel-4k-nvr-ds-7616ni-q1">
-                    16 Channel 4K NVR DS-7616NI-Q1
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. 15032 </span>
-                <span class="product-price-old">Rs. 16703</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-            </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="16-channel-4k-nvr-ds-7616ni-q1" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="16-channel-4k-nvr-ds-7616ni-q1">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
-                                    <li class="product ">
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/hikvision/2-mp-ir-ip-bullet-camera-ds-2cd1023g0e-i">
-                    <img src="https://zenithsuppliers.com.np/images/product/300_300_9410_Camera DS-2CD1023G0E-I.png" alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/hikvision/2-mp-ir-ip-bullet-camera-ds-2cd1023g0e-i">
-                    2 MP IR IP Bullet Camera DS-2CD1023G0E-I
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. 5780 </span>
-                <span class="product-price-old">Rs. 6419</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-            </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="2-mp-ir-ip-bullet-camera-ds-2cd1023g0e-i" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="2-mp-ir-ip-bullet-camera-ds-2cd1023g0e-i">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
-                                    <li class="product ">
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/hikvision/8-channel-4k-nvr-ds-7608ni-q2">
-                    <img src="https://zenithsuppliers.com.np/images/product/300_300_4228_8 Channel 4K NVR DS-7608NI-Q2.jpg" alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/hikvision/8-channel-4k-nvr-ds-7608ni-q2">
-                    8 Channel 4K NVR DS-7608NI-Q2
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. 15935 </span>
-                <span class="product-price-old">Rs. 17705</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-            </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="8-channel-4k-nvr-ds-7608ni-q2" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="8-channel-4k-nvr-ds-7608ni-q2">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
                                     </ul>
     </div>
+    {% endfor %}
 </div>
                             <!-- ./block-shop-features-->
                         </div>
@@ -589,150 +159,54 @@
     </div>
     <div class="block-inner">
         <ul class="products kt-owl-carousel" data-margin="0" data-loop="true"  data-nav="true" data-responsive='{"0":{"items":2},"600":{"items":2},"1000":{"items":2}}'>
-                                                <li class="product ">
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/dell/dell-inspiron-3511-i5-11th-gen-nvidia-mx350-graphics-8gb-ram-512gb-ssd-156-fhd-display">
-                    <img src="https://zenithsuppliers.com.np/images/product/300_300_9606_Dell 3511 i7.jpg" alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/dell/dell-inspiron-3511-i5-11th-gen-nvidia-mx350-graphics-8gb-ram-512gb-ssd-156-fhd-display">
-                    Dell Inspiron 3511 i5 11th Gen / Nvidia MX350 Graphics / 8GB RAM / 512GB SSD / 15.6&quot; FHD Display
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. 99000 </span>
-                <span class="product-price-old">Rs. 105000</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
+            <li class="product ">
+            <div class="product-container">
+                <div class="product-left">
+                    <div class="product-thumb">
+                        <a class="product-img" href="https://zenithsuppliers.com.np/dell/dell-inspiron-3511-i5-11th-gen-nvidia-mx350-graphics-8gb-ram-512gb-ssd-156-fhd-display">
+                            <img src="https://zenithsuppliers.com.np/images/product/300_300_9606_Dell 3511 i7.jpg" alt="Product">
+                        </a>
+                        <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
+                    </div>
+                    <div class="product-status">
+                        <span class="new">New</span>
+                        <span class="sale">Sale</span>
+                    </div>
+                </div>
+                <div class="product-right">
+                    <div class="product-name">
+                        <a href="https://zenithsuppliers.com.np/dell/dell-inspiron-3511-i5-11th-gen-nvidia-mx350-graphics-8gb-ram-512gb-ssd-156-fhd-display">
+                            Dell Inspiron 3511 i5 11th Gen / Nvidia MX350 Graphics / 8GB RAM / 512GB SSD / 15.6&quot; FHD Display
+                        </a>
+                    </div>
+                    <div class="price-box">
+                        <span class="product-price">Rs. 99000 </span>
+                        <span class="product-price-old">Rs. 105000</span>
+                    </div>
+                    <div class="product-star">
+                        <i class="fa fa-star-o"></i>
+            
 
-            <i class="fa fa-star-o"></i>
-    
+                    <i class="fa fa-star-o"></i>
+            
 
-            <i class="fa fa-star-o"></i>
-    
+                    <i class="fa fa-star-o"></i>
+            
 
-            <i class="fa fa-star-o"></i>
-    
+                    <i class="fa fa-star-o"></i>
+            
 
-            <i class="fa fa-star-o"></i>
-    
+                    <i class="fa fa-star-o"></i>
+            
+                    </div>
+                    <div class="product-button">
+                        <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
+                        <a class="btn-add-comparre grid-add-to-compare" attr-slug="dell-inspiron-3511-i5-11th-gen-nvidia-mx350-graphics-8gb-ram-512gb-ssd-156-fhd-display" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
+                        <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="dell-inspiron-3511-i5-11th-gen-nvidia-mx350-graphics-8gb-ram-512gb-ssd-156-fhd-display">Buy<span class="icon"></span></a>
+                    </div>
+                </div>
             </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="dell-inspiron-3511-i5-11th-gen-nvidia-mx350-graphics-8gb-ram-512gb-ssd-156-fhd-display" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="dell-inspiron-3511-i5-11th-gen-nvidia-mx350-graphics-8gb-ram-512gb-ssd-156-fhd-display">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
-                                    <li class="product ">
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/hikvision/16-channel-4k-nvr-ds-7616ni-q1">
-                    <img src="https://zenithsuppliers.com.np/images/product/300_300_3026_6 Channel 4K NVR DS-7616NI-Q1.jpg" alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/hikvision/16-channel-4k-nvr-ds-7616ni-q1">
-                    16 Channel 4K NVR DS-7616NI-Q1
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. 15032 </span>
-                <span class="product-price-old">Rs. 16703</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-            </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="16-channel-4k-nvr-ds-7616ni-q1" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="16-channel-4k-nvr-ds-7616ni-q1">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
-                                    <li class="product ">
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a class="product-img" href="https://zenithsuppliers.com.np/dell/dell-inspirion-3501-i7-11th-gen-8gb-ram-512gb-ssd-nvidia-mx330-156-fhd-display">
-                    <img src="https://zenithsuppliers.com.np/images/product/300_300_8368_dell-vostro-3500-price-nepal-cheap-i7-laptop.jpg" alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/dell/dell-inspirion-3501-i7-11th-gen-8gb-ram-512gb-ssd-nvidia-mx330-156-fhd-display">
-                    Dell Inspirion 3501 i7 11th Gen / 8GB RAM / 512GB SSD / Nvidia MX330 / 15.6&quot; FHD Display
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. 114000 </span>
-                <span class="product-price-old">Rs. 118000</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-            </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="dell-inspirion-3501-i7-11th-gen-8gb-ram-512gb-ssd-nvidia-mx330-156-fhd-display" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="dell-inspirion-3501-i7-11th-gen-8gb-ram-512gb-ssd-nvidia-mx330-156-fhd-display">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
+            </li>
                                     </ul>
     </div>
 </div>
@@ -836,57 +310,56 @@
     </div>
     <div class="block-inner">
         <ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":5}}'>
-                                                <li class="product ">
+            <li class="product ">
                     
-    {% for latest_product in latest_products %}
-    <div class="product-container">
-        <div class="product-left">
-            <div class="product-thumb">
-                <a style="height:200px; width:200px;" class="product-img" href="https://zenithsuppliers.com.np/hikvision/32-channel-4k-nvr-ds-7732ni-k4">
-                    <img src={{latest_product.image.url}} alt="Product">
-                </a>
-                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-            </div>
-            <div class="product-status">
-                <span class="new">New</span>
-                <span class="sale">Sale</span>
-            </div>
-        </div>
-        <div class="product-right">
-            <div class="product-name">
-                <a href="https://zenithsuppliers.com.np/hikvision/32-channel-4k-nvr-ds-7732ni-k4">
-                    {{latest_product.title}}
-                </a>
-            </div>
-            <div class="price-box">
-                <span class="product-price">Rs. {{latest_product.new_price}} </span>
-                <span class="product-price-old">Rs. {{latest_product.old_price}}</span>
-            </div>
-            <div class="product-star">
-                <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-
-            <i class="fa fa-star-o"></i>
-    
-            </div>
-            <div class="product-button">
-                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                <a class="btn-add-comparre grid-add-to-compare" attr-slug="32-channel-4k-nvr-ds-7732ni-k4" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="32-channel-4k-nvr-ds-7732ni-k4">Buy<span class="icon"></span></a>
-            </div>
-        </div>
-    </div>
-</li>
-                                    
+                {% for latest_product in latest_products %}
+                <div class="product-container">
+                    <div class="product-left">
+                        <div class="product-thumb">
+                            <a style="height:200px; width:200px;" class="product-img" href="https://zenithsuppliers.com.np/hikvision/32-channel-4k-nvr-ds-7732ni-k4">
+                                <img src={{latest_product.image.url}} alt="Product">
+                            </a>
+                            <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
+                        </div>
+                        <div class="product-status">
+                            <span class="new">New</span>
+                            <span class="sale">Sale</span>
+                        </div>
+                    </div>
+                    <div class="product-right">
+                        <div class="product-name">
+                            <a href="https://zenithsuppliers.com.np/hikvision/32-channel-4k-nvr-ds-7732ni-k4">
+                                {{latest_product.title}}
+                            </a>
+                        </div>
+                        <div class="price-box">
+                            <span class="product-price">Rs. {{latest_product.new_price}} </span>
+                            <span class="product-price-old">Rs. {{latest_product.old_price}}</span>
+                        </div>
+                        <div class="product-star">
+                            <i class="fa fa-star-o"></i>
+                
+            
+                        <i class="fa fa-star-o"></i>
+                
+            
+                        <i class="fa fa-star-o"></i>
+                
+            
+                        <i class="fa fa-star-o"></i>
+                
+            
+                        <i class="fa fa-star-o"></i>
+                
+                        </div>
+                        <div class="product-button">
+                            <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
+                            <a class="btn-add-comparre grid-add-to-compare" attr-slug="32-channel-4k-nvr-ds-7732ni-k4" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
+                            <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="32-channel-4k-nvr-ds-7732ni-k4">Buy<span class="icon"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </li>                                   
 
 {% endfor %}
 

@@ -1,0 +1,113 @@
+<div class="block block-sidebar">
+    <div class="block-head">
+      <h5 class="widget-title">Filters</h5>
+    </div>
+    <div class="block-inner">
+      <div class="block-filter category-block-filter">
+        {% for category in categories %}
+        <div class="block-sub-title">
+          <input
+            class="parent_category_chk"
+            type="checkbox"
+            
+          />
+          {{category.title}}
+        </div>
+          
+          <div class="block-filter-inner">
+            <ul class="check-box-list">
+              {% for subcategory in category.subcategories.all %}
+              <li>
+                <input
+                  class="child-luminous"
+                  type="checkbox"
+                 
+                  
+                />
+                <label for="battery" id="battery">
+                  <span class="button"></span>
+                  {{ subcategory.title }}
+                  <span class="count">(0)</span>
+                </label>
+              </li>
+              {% endfor %}
+      
+            </ul>
+          </div>
+          
+        {% endfor %}
+      </div>
+      <div class="block-filter">
+        <div class="block-sub-title">Price</div>
+        <div class="form-group">
+          <input
+            type="number"
+            id="filter_price_start"
+            min="0"
+            placeholder="Start Price"
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="number"
+            id="filter_price_end"
+            min="0"
+            placeholder="End Price"
+          />
+        </div>
+      </div>
+      <div class="block-filter">
+        <div class="block-sub-title">Manufacturer</div>
+        <div class="block-filter-inner">
+          <ul class="check-box-list">
+            {% for manufacturers in manufacturer %}
+            <li>
+              <input
+                type="checkbox"
+                id="acer"
+                class="filter_by_brand"
+                name="cc"
+                value="acer"
+              />
+              <label for="acer">
+                <span class="button"></span>
+                {{manufacturers.brand_name}}<span class="count">(0)</span>
+              </label>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="block-filter">
+        <div class="block-sub-title">AVAILABILITY</div>
+        <div class="block-filter-inner">
+          <ul class="check-box-list">
+            <li>
+              <input
+                type="radio"
+                name="filter_stock"
+                value="in-stock"
+                checked
+              />
+              <label for="filter_in_stock">
+                <span></span>
+                In Stock<span class="count">(37)</span>
+              </label>
+            </li>
+            <li>
+              <input
+                type="radio"
+                name="filter_stock"
+                value="out-of-stock"
+              />
+              <label for="filter_out_of_stock">
+                <span></span>
+                Not available <span class="count">(0)</span>
+              </label>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>

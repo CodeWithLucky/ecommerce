@@ -1,0 +1,13 @@
+<div class="block-inner">
+    <div class="block-list-category">
+      <p>All Categories</p>
+      <ul class="tree-menu">
+        {% for category in categories %}
+        <li class="active">
+          <a id="filter_by_category-{{category.id}}" data-id="{{category.id}}">{{category.title}}</a>
+          <ul></ul>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>

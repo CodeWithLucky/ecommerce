@@ -1,0 +1,78 @@
+<div class="category-products">
+    <ul class="products row" id="product-list-wrapper">
+      <!--col-xs-12 col-sm-6 col-md-4-->
+      {% for product in product_sort %}
+      <li class="product col-xs-12 col-sm-6 col-md-4">
+        <div class="product-container">
+          <div class="product-left">
+            <div class="product-thumb">
+              <a style="height:250px; width:250px;"
+                class="product-img"
+                href=""
+              >
+                <img src="{{ product.image.url }}" alt="Product" />
+              </a>
+              <a title="Quick View" href="#" class="btn-quick-view"
+                >Quick View</a
+              >
+            </div>
+            <div class="product-status">
+              <span class="new">New</span>
+              <span class="sale">Sale</span>
+            </div>
+          </div>
+          <div class="product-right">
+            <div class="product-name">
+              <a
+                href="{% url 'products_detail' product.id %}"
+              >
+                {{product.title}}
+              </a>
+            </div>
+            <div class="price-box">
+              <span class="product-price"
+                >Rs. {{product.new_price}}</span
+              >
+              <span class="product-price-old"
+                >Rs. {{product.old_price}}</span
+              >
+            </div>
+            <div class="product-star">
+              <i class="fa fa-star-o"></i>
+
+              <i class="fa fa-star-o"></i>
+
+              <i class="fa fa-star-o"></i>
+
+              <i class="fa fa-star-o"></i>
+
+              <i class="fa fa-star-o"></i>
+            </div>
+            <div class="product-button">
+              <a
+                class="btn-add-wishlist"
+                title="Add to Wishlist"
+                href="#"
+                >Add Wishlist</a
+              >
+              <a
+                class="btn-add-comparre grid-add-to-compare"
+                attr-slug="eco-watt-neo-1650"
+                title="Add to Compare"
+                href="javascript:void(0);"
+                >Add Compare</a
+              >
+              <a
+                class="button-radius btn-add-cart grid-add-to-cart-btn"
+                title="Add to Cart"
+                href="javascript:void(0);"
+                attr-slug="eco-watt-neo-1650"
+                >Buy<span class="icon"></span
+              ></a>
+            </div>
+          </div>
+        </div>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>

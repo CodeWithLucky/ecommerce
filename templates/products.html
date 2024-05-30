@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% block header %} {% include "Snippet/topbar.html" %}
+f{% extends "base.html" %} {% block header %} {% include "Snippet/topbar.html" %}
 {% include "Snippet/banner.html" %} {% include "Snippet/navbar.html" %}
 <div class="container">
   <!-- Searchbar -->
@@ -28,133 +28,11 @@
               <div class="block-head">
                 <h5 class="widget-title">Categories</h5>
               </div>
-              <div class="block-inner">
-                <div class="block-list-category">
-                  <p>All Categories</p>
-                  <ul class="tree-menu">
-                    {% for category in categories %}
-                    <li class="active">
-                      <a href="{% url 'products_by_category' %}">{{category.title}}</a>
-                      <ul></ul>
-                    </li>
-                    {% endfor %}
-                  </ul>
-                </div>
-              </div>
+              <!-- category-sidebar-->
+                {% include "Snippet/category-sidebar.html" %}              
             </div>
-            <div class="block block-sidebar">
-              <div class="block-head">
-                <h5 class="widget-title">Filters</h5>
-              </div>
-              <div class="block-inner">
-                <div class="block-filter category-block-filter">
-                  {% for category in categories %}
-                  <div class="block-sub-title">
-                    <input
-                      class="parent_category_chk"
-                      type="checkbox"
-                      
-                    />
-                    {{category.title}}
-                  </div>
-                    
-                    <div class="block-filter-inner">
-                      <ul class="check-box-list">
-                        {% for subcategory in category.subcategories.all %}
-                        <li>
-                          <input
-                            class="child-luminous"
-                            type="checkbox"
-                           
-                            
-                          />
-                          <label for="battery" id="battery">
-                            <span class="button"></span>
-                            {{ subcategory.title }}
-                            <span class="count">(0)</span>
-                          </label>
-                        </li>
-                        {% endfor %}
-                
-                      </ul>
-                    </div>
-                    
-                  {% endfor %}
-                </div>
-                <div class="block-filter">
-                  <div class="block-sub-title">Price</div>
-                  <div class="form-group">
-                    <input
-                      type="number"
-                      id="filter_price_start"
-                      min="0"
-                      placeholder="Start Price"
-                    />
-                  </div>
+              <!-- filter-sidebar-->
 
-                  <div class="form-group">
-                    <input
-                      type="number"
-                      id="filter_price_end"
-                      min="0"
-                      placeholder="End Price"
-                    />
-                  </div>
-                </div>
-                <div class="block-filter">
-                  <div class="block-sub-title">Manufacturer</div>
-                  <div class="block-filter-inner">
-                    <ul class="check-box-list">
-                      {% for manufacturers in manufacturer %}
-                      <li>
-                        <input
-                          type="checkbox"
-                          id="acer"
-                          class="filter_by_brand"
-                          name="cc"
-                          value="acer"
-                        />
-                        <label for="acer">
-                          <span class="button"></span>
-                          {{manufacturers.brand_name}}<span class="count">(0)</span>
-                        </label>
-                      </li>
-                      {% endfor %}
-                    </ul>
-                  </div>
-                </div>
-                <div class="block-filter">
-                  <div class="block-sub-title">AVAILABILITY</div>
-                  <div class="block-filter-inner">
-                    <ul class="check-box-list">
-                      <li>
-                        <input
-                          type="radio"
-                          name="filter_stock"
-                          value="in-stock"
-                          checked
-                        />
-                        <label for="filter_in_stock">
-                          <span></span>
-                          In Stock<span class="count">(37)</span>
-                        </label>
-                      </li>
-                      <li>
-                        <input
-                          type="radio"
-                          name="filter_stock"
-                          value="out-of-stock"
-                        />
-                        <label for="filter_out_of_stock">
-                          <span></span>
-                          Not available <span class="count">(0)</span>
-                        </label>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
           <div class="col-xs-12 col-sm-8 col-md-9">
             <div class="sortPagiBar">
@@ -204,154 +82,44 @@
           
           
 
-            <div class="category-products">
-              <ul class="products row" id="product-list-wrapper">
-                <!--col-xs-12 col-sm-6 col-md-4-->
-                {% for product in products %}
-                <li class="product col-xs-12 col-sm-6 col-md-4">
-                  <div class="product-container">
-                    <div class="product-left">
-                      <div class="product-thumb">
-                        <a style="height:250px; width:250px;"
-                          class="product-img"
-                          href=""
-                        >
-                          <img src="{{ product.image.url }}" alt="Product" />
-                        </a>
-                        <a title="Quick View" href="#" class="btn-quick-view"
-                          >Quick View</a
-                        >
-                      </div>
-                      <div class="product-status">
-                        <span class="new">New</span>
-                        <span class="sale">Sale</span>
-                      </div>
-                    </div>
-                    <div class="product-right">
-                      <div class="product-name">
-                        <a
-                          href="{% url 'products_detail' product.id %}"
-                        >
-                          {{product.title}}
-                        </a>
-                      </div>
-                      <div class="price-box">
-                        <span class="product-price"
-                          >Rs. {{product.new_price}}</span
-                        >
-                        <span class="product-price-old"
-                          >Rs. {{product.old_price}}</span
-                        >
-                      </div>
-                      <div class="product-star">
-                        <i class="fa fa-star-o"></i>
-
-                        <i class="fa fa-star-o"></i>
-
-                        <i class="fa fa-star-o"></i>
-
-                        <i class="fa fa-star-o"></i>
-
-                        <i class="fa fa-star-o"></i>
-                      </div>
-                      <div class="product-button">
-                        <a
-                          class="btn-add-wishlist"
-                          title="Add to Wishlist"
-                          href="#"
-                          >Add Wishlist</a
-                        >
-                        <a
-                          class="btn-add-comparre grid-add-to-compare"
-                          attr-slug="eco-watt-neo-1650"
-                          title="Add to Compare"
-                          href="javascript:void(0);"
-                          >Add Compare</a
-                        >
-                        <a
-                          class="button-radius btn-add-cart grid-add-to-cart-btn"
-                          title="Add to Cart"
-                          href="javascript:void(0);"
-                          attr-slug="eco-watt-neo-1650"
-                          >Buy<span class="icon"></span
-                        ></a>
-                      </div>
-                    </div>
-                  </div>
-                </li>
-                {% endfor %}
-              </ul>
-            </div>
+            <!-- product-bar-->
+                  {% include "Snippet/product-bar.html" %}
             <div class="sortPagiBar">
               <div class="sortPagiBar-inner">
-                <nav>
-                  <ul class="pagination">
-                    <nav>
+                  <nav>
                       <ul class="pagination">
-                        <li
-                          class="page-item disabled"
-                          aria-disabled="true"
-                          aria-label="&laquo; Previous"
-                        >
-                          <span class="page-link" aria-hidden="true"
-                            >&lsaquo;</span
-                          >
-                        </li>
-
-                        <li class="page-item active" aria-current="page">
-                          <span class="page-link">1</span>
-                        </li>
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href=""
-                            >2</a
-                          >
-                        </li>
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href=""
-                            >3</a
-                          >
-                        </li>
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href=""
-                            >4</a
-                          >
-                        </li>
-
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href=""
-                            rel="next"
-                            aria-label="Next &raquo;"
-                            >&rsaquo;</a
-                          >
-                        </li>
+                          {% if products.has_previous %}
+                          <li class="page-item">
+                              <a class="page-link" href="?page={{ products.previous_page_number }}" aria-label="Previous">
+                                  <span aria-hidden="true">&lsaquo;</span>
+                              </a>
+                          </li>
+                          {% endif %}
+          
+                          {% for num in products.paginator.page_range %}
+                          {% if products.number == num %}
+                          <li class="page-item active">
+                              <span class="page-link">{{ num }}</span>
+                          </li>
+                          {% else %}
+                          <li class="page-item">
+                              <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                          </li>
+                          {% endif %}
+                          {% endfor %}
+          
+                          {% if products.has_next %}
+                          <li class="page-item">
+                              <a class="page-link" href="?page={{ products.next_page_number }}" aria-label="Next">
+                                  <span aria-hidden="true">&rsaquo;</span>
+                              </a>
+                          </li>
+                          {% endif %}
                       </ul>
-                    </nav>
-                  </ul>
-                </nav>
-
-                <div class="sort-product">
-                  <select id="product-sorting">
-                    <option value="recent-product-first">
-                      Recent Product First
-                    </option>
-                    <option value="older-product-first">
-                      Older Product First
-                    </option>
-                    <option value="price-high-to-low">Price High to Low</option>
-                    <option value="price-low-to-high">Price Low to High</option>
-                  </select>
-                </div>
+                  </nav>
+          
               </div>
-            </div>
-
+          </div>
             <div class="block block-categories-slider">
               <div
                 class="list kt-owl-carousel"
@@ -620,6 +388,38 @@
           },
         });
       }
+
+      // ajax for category wise filter
+
+      
+      {% for category in categories %}
+      $('#filter_by_category-{{ category.id }}').on('click', function() {
+          var id = $(this).data('id');
+         
+           $.ajax({
+            method: "POST",
+            url: "{% url "products" %}",
+            data:{
+              csrfmiddlewaretoken:"{{csrf_token}}",
+              category_id:id,
+
+            },
+            success: function (response) {
+              var data = $.parseJSON(response);
+              if (data.html == "") {
+                $("#product-list-wrapper")
+                  .html("")
+                  .html(
+                    '<li class="col-md-12 center"><strong style="padding: 100px;">No Data Matching Filter</strong><li>'
+                  );
+              } else {
+                $("#product-list-wrapper").html("").html(data.html);
+              }
+            },
+          }); 
+      });
+  {% endfor %}
+
     </script>
 
     {% endblock content %} 
