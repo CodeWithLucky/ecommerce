@@ -23,7 +23,7 @@
     <link rel="stylesheet" type="text/css" href="{% static "edo/assets/css/style.css" %}" />
     <link rel="stylesheet" type="text/css" href="{% static "edo/assets/css/responsive.css" %}" />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <title>Zenith(Complete IT Products)</title>
+    <title>EAZY Shopping</title>
     <link rel="stylesheet" href="{% static "edo/assets/css/jquery.gritter.min.css" %}" />
 	
 	
@@ -842,7 +842,7 @@
     <div class="product-container">
         <div class="product-left">
             <div class="product-thumb">
-                <a style=""" class="product-img" href="https://zenithsuppliers.com.np/hikvision/32-channel-4k-nvr-ds-7732ni-k4">
+                <a style="height:200px; width:200px;" class="product-img" href="https://zenithsuppliers.com.np/hikvision/32-channel-4k-nvr-ds-7732ni-k4">
                     <img src={{latest_product.image.url}} alt="Product">
                 </a>
                 <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
@@ -1038,7 +1038,7 @@
             console.log('clicked');
             var category = $('#category-select-id').val();
             var key = $('#top-search-key').val();
-            var url = 'https://zenithsuppliers.com.np/search';
+            var url = '/';
             url = url + '?category=' + category;
             if(key !==''){
                 url = url + '&key=' + key;

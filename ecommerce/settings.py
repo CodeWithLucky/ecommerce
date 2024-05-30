@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'product',
     'user',
+    'django_seed',
+
 ]
 
 MIDDLEWARE = [

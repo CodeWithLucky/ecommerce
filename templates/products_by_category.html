@@ -1,0 +1,655 @@
+{% extends "base.html" %} {% block header %} {% include "Snippet/topbar.html" %}
+{% include "Snippet/banner.html" %} {% include "Snippet/navbar.html" %}
+<div class="container">
+  <!-- Searchbar -->
+  {% include "Snippet/searchbar.html" %}
+  <!-- ./Searchbar -->
+</div>
+{% endblock header %}
+{% block content %}
+<div class="container">
+    <div class="row">
+      <div class="block block-breadcrumbs">
+        <ul>
+          <li class="home">
+            <a href=""
+              ><i class="fa fa-home"></i
+            ></a>
+            <span></span>
+          </li>
+          <li>
+            <a href="">Search</a>
+            <span></span>
+          </li>
+        </ul>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-3">
+          <div class="block block-sidebar">
+            <div class="block-head">
+              <h5 class="widget-title">Categories</h5>
+            </div>
+            <div class="block-inner">
+              <div class="block-list-category">
+                <p>All Categories</p>
+                <ul class="tree-menu">
+                  {% for category in categories %}
+                  <li class="active">
+                    <a href="{% url 'products_by_category' %}">{{category.title}}</a>
+                    <ul></ul>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="block block-sidebar">
+            <div class="block-head">
+              <h5 class="widget-title">Filters</h5>
+            </div>
+            <div class="block-inner">
+              <div class="block-filter category-block-filter">
+                {% for category in categories %}
+                <div class="block-sub-title">
+                  <input
+                    class="parent_category_chk"
+                    type="checkbox"
+                    
+                  />
+                  {{category.title}}
+                </div>
+                  
+                  <div class="block-filter-inner">
+                    <ul class="check-box-list">
+                      {% for subcategory in category.subcategories.all %}
+                      <li>
+                        <input
+                          class="child-luminous"
+                          type="checkbox"
+                         
+                          
+                        />
+                        <label for="battery" id="battery">
+                          <span class="button"></span>
+                          {{ subcategory.title }}
+                          <span class="count">(0)</span>
+                        </label>
+                      </li>
+                      {% endfor %}
+              
+                    </ul>
+                  </div>
+                  
+                {% endfor %}
+              </div>
+              <div class="block-filter">
+                <div class="block-sub-title">Price</div>
+                <div class="form-group">
+                  <input
+                    type="number"
+                    id="filter_price_start"
+                    min="0"
+                    placeholder="Start Price"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <input
+                    type="number"
+                    id="filter_price_end"
+                    min="0"
+                    placeholder="End Price"
+                  />
+                </div>
+              </div>
+              <div class="block-filter">
+                <div class="block-sub-title">Manufacturer</div>
+                <div class="block-filter-inner">
+                  <ul class="check-box-list">
+                    {% for manufacturers in manufacturer %}
+                    <li>
+                      <input
+                        type="checkbox"
+                        id="acer"
+                        class="filter_by_brand"
+                        name="cc"
+                        value="acer"
+                      />
+                      <label for="acer">
+                        <span class="button"></span>
+                        {{manufacturers.brand_name}}<span class="count">(0)</span>
+                      </label>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              </div>
+              <div class="block-filter">
+                <div class="block-sub-title">AVAILABILITY</div>
+                <div class="block-filter-inner">
+                  <ul class="check-box-list">
+                    <li>
+                      <input
+                        type="radio"
+                        name="filter_stock"
+                        value="in-stock"
+                        checked
+                      />
+                      <label for="filter_in_stock">
+                        <span></span>
+                        In Stock<span class="count">(37)</span>
+                      </label>
+                    </li>
+                    <li>
+                      <input
+                        type="radio"
+                        name="filter_stock"
+                        value="out-of-stock"
+                      />
+                      <label for="filter_out_of_stock">
+                        <span></span>
+                        Not available <span class="count">(0)</span>
+                      </label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-9">
+          <h3 class="page-title">
+            <span>Search For:</span>
+            <span>All Categories</span>
+            <a href="#" class="button-radius compare-link"
+              >Compare (1)<span class="icon"></span
+            ></a>
+          </h3>
+          <div class="sortPagiBar">
+            <div class="sortPagiBar-inner">
+              <nav>
+                <ul class="pagination">
+                  <nav>
+                    <ul class="pagination">
+                      <li
+                        class="page-item disabled"
+                        aria-disabled="true"
+                        aria-label="&laquo; Previous"
+                      >
+                        <span class="page-link" aria-hidden="true"
+                          >&lsaquo;</span
+                        >
+                      </li>
+
+                      <li class="page-item active" aria-current="page">
+                        <span class="page-link">1</span>
+                      </li>
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href=""
+                          >2</a
+                        >
+                      </li>
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href=""
+                          >3</a
+                        >
+                      </li>
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href=""
+                          >4</a
+                        >
+                      </li>
+
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href=""
+                          rel="next"
+                          aria-label="Next &raquo;"
+                          >&rsaquo;</a
+                        >
+                      </li>
+                    </ul>
+                  </nav>
+                </ul>
+              </nav>
+
+              <div class="sort-product">
+                <select id="product-sorting">
+                  <option value="recent-product-first">
+                    Recent Product First
+                  </option>
+                  <option value="older-product-first">
+                    Older Product First
+                  </option>
+                  <option value="price-high-to-low">Price High to Low</option>
+                  <option value="price-low-to-high">Price Low to High</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="category-products">
+            <ul class="products row" id="product-list-wrapper">
+              <!--col-xs-12 col-sm-6 col-md-4-->
+              {% for product in products %}
+              <li class="product col-xs-12 col-sm-6 col-md-4">
+                <div class="product-container">
+                  <div class="product-left">
+                    <div class="product-thumb">
+                      <a style="height:250px; width:250px;"
+                        class="product-img"
+                        href=""
+                      >
+                        <img src="{{ product.image.url }}" alt="Product" />
+                      </a>
+                      <a title="Quick View" href="#" class="btn-quick-view"
+                        >Quick View</a
+                      >
+                    </div>
+                    <div class="product-status">
+                      <span class="new">New</span>
+                      <span class="sale">Sale</span>
+                    </div>
+                  </div>
+                  <div class="product-right">
+                    <div class="product-name">
+                      <a
+                        href=""
+                      >
+                        {{product.title}}
+                      </a>
+                    </div>
+                    <div class="price-box">
+                      <span class="product-price"
+                        >Rs. {{product.new_price}}</span
+                      >
+                      <span class="product-price-old"
+                        >Rs. {{product.old_price}}</span
+                      >
+                    </div>
+                    <div class="product-star">
+                      <i class="fa fa-star-o"></i>
+
+                      <i class="fa fa-star-o"></i>
+
+                      <i class="fa fa-star-o"></i>
+
+                      <i class="fa fa-star-o"></i>
+
+                      <i class="fa fa-star-o"></i>
+                    </div>
+                    <div class="product-button">
+                      <a
+                        class="btn-add-wishlist"
+                        title="Add to Wishlist"
+                        href="#"
+                        >Add Wishlist</a
+                      >
+                      <a
+                        class="btn-add-comparre grid-add-to-compare"
+                        attr-slug="eco-watt-neo-1650"
+                        title="Add to Compare"
+                        href="javascript:void(0);"
+                        >Add Compare</a
+                      >
+                      <a
+                        class="button-radius btn-add-cart grid-add-to-cart-btn"
+                        title="Add to Cart"
+                        href="javascript:void(0);"
+                        attr-slug="eco-watt-neo-1650"
+                        >Buy<span class="icon"></span
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="sortPagiBar">
+            <div class="sortPagiBar-inner">
+              <nav>
+                <ul class="pagination">
+                  <nav>
+                    <ul class="pagination">
+                      <li
+                        class="page-item disabled"
+                        aria-disabled="true"
+                        aria-label="&laquo; Previous"
+                      >
+                        <span class="page-link" aria-hidden="true"
+                          >&lsaquo;</span
+                        >
+                      </li>
+
+                      <li class="page-item active" aria-current="page">
+                        <span class="page-link">1</span>
+                      </li>
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href=""
+                          >2</a
+                        >
+                      </li>
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href=""
+                          >3</a
+                        >
+                      </li>
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href=""
+                          >4</a
+                        >
+                      </li>
+
+                      <li class="page-item">
+                        <a
+                          class="page-link"
+                          href=""
+                          rel="next"
+                          aria-label="Next &raquo;"
+                          >&rsaquo;</a
+                        >
+                      </li>
+                    </ul>
+                  </nav>
+                </ul>
+              </nav>
+
+              <div class="sort-product">
+                <select id="product-sorting">
+                  <option value="recent-product-first">
+                    Recent Product First
+                  </option>
+                  <option value="older-product-first">
+                    Older Product First
+                  </option>
+                  <option value="price-high-to-low">Price High to Low</option>
+                  <option value="price-low-to-high">Price Low to High</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="block block-categories-slider">
+            <div
+              class="list kt-owl-carousel"
+              data-animateout="fadeOut"
+              data-animateIn="fadeIn"
+              data-items="1"
+              data-autoplay="true"
+              data-margin="0"
+              data-loop="true"
+              data-nav="true"
+            >
+              <a href="#"
+                ><img
+                  src="/edo/data/option1/slider-cat.jpg"
+                  alt="slider-cat.jpg"
+              /></a>
+              <a href="#"
+                ><img
+                  src="/edo/data/option1/slider-cat2.jpg"
+                  alt="slider-cat2.jpg"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <a href="#" class="scroll_top" title="Scroll to Top" style="display: inline"
+    >Scroll</a
+  >
+  <script
+    type="text/javascript"
+    src="https://zenithsuppliers.com.np/edo/assets/lib/jquery/jquery-1.11.2.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://zenithsuppliers.com.np/edo/assets/lib/bootstrap/js/bootstrap.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://zenithsuppliers.com.np/edo/assets/lib/jquery.bxslider/jquery.bxslider.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://zenithsuppliers.com.np/edo/assets/lib/owl.carousel/owl.carousel.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://zenithsuppliers.com.np/edo/assets/lib/jquery-ui/jquery-ui.min.js"
+  ></script>
+  <!-- COUNTDOWN -->
+  <script
+    type="text/javascript"
+    src="https://zenithsuppliers.com.np/edo/assets/lib/countdown/jquery.plugin.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://zenithsuppliers.com.np/edo/assets/lib/countdown/jquery.countdown.js"
+  ></script>
+  <!-- ./COUNTDOWN -->
+  <script
+    type="text/javascript"
+    src="https://zenithsuppliers.com.np/edo/assets/js/jquery.actual.min.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="https://zenithsuppliers.com.np/edo/assets/js/script.js"
+  ></script>
+  <script src="https://zenithsuppliers.com.np/ace/assets/js/jquery.gritter.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".navbar-nav")
+        .find("li")
+        .each(function (i, value) {
+          var url = $(value).find("a").attr("href");
+          var current_url = stripTrailingSlash(location.href);
+
+          if (url == current_url) {
+            $(value).addClass("active");
+          }
+        });
+
+      //category search top
+      {% comment %} $("#top-header-submit-btn").click(function () {
+        console.log("clicked");
+        var category = $("#category-select-id").val();
+        var key = $("#top-search-key").val();
+        var url = "";
+        url = url + "?category=" + category;
+        if (key !== "") {
+          url = url + "&key=" + key;
+        }
+        location.href = url;
+      }); {% endcomment %}
+
+      $("body").on("click", ".grid-add-to-cart-btn", function () {
+        $.ajax({
+          url: "https://zenithsuppliers.com.np/add-to-cart",
+          method: "POST",
+          data: {
+            slug: $(this).attr("attr-slug"),
+          },
+          success: function (response) {
+            var data = $.parseJSON(response);
+            if (data.error) {
+              $.gritter.add({
+                // (string | mandatory) the heading of the notification
+                title: "Invalid Request!",
+                // (string | mandatory) the text inside the notification
+                text: data.message,
+                class_name: "gritter-warning",
+              });
+            } else {
+              $.gritter.add({
+                // (string | mandatory) the heading of the notification
+                title: "Added to Cart!",
+                // (string | mandatory) the text inside the notification
+                text: data.message,
+                class_name: "gritter-success",
+              });
+
+              $("#header_cart_wrapper").html(data.cart_html_block);
+            }
+          },
+        });
+      });
+
+      $("body").on("click", ".grid-add-to-compare", function () {
+        $.ajax({
+          url: "https://zenithsuppliers.com.np/compare",
+          method: "POST",
+          data: {
+            slug: $(this).attr("attr-slug"),
+          },
+          success: function (response) {
+            if (response.error) {
+              $.gritter.add({
+                // (string | mandatory) the heading of the notification
+                title: "Invalid Request!",
+                // (string | mandatory) the text inside the notification
+                text: response.message,
+                class_name: "gritter-warning",
+              });
+            } else {
+              $.gritter.add({
+                // (string | mandatory) the heading of the notification
+                title: "Added to Compare List!",
+                // (string | mandatory) the text inside the notification
+                text: response.message,
+                class_name: "gritter-success",
+              });
+            }
+          },
+        });
+      });
+    });
+
+    function stripTrailingSlash(str) {
+      if (str.substr(-1) === "/") {
+        return str.substr(0, str.length - 1);
+      }
+      return str;
+    }
+  </script>
+  <script>
+    //filter
+    $(document).ready(function () {
+      $("#product-sorting").change(function () {
+        var url = "";
+        location.href = url + "&sorting=" + $(this).val();
+      });
+    });
+  </script>
+  <script>
+    //filter
+    $(document).ready(function () {
+      $("#filter_price_start").blur(function () {
+        loadProductsWithFilters();
+      });
+      $("#filter_price_end").blur(function () {
+        loadProductsWithFilters();
+      });
+      $("input.filter_by_brand").on("change", function () {
+        loadProductsWithFilters();
+      });
+
+      $('input:radio[name="filter_stock"]').on("click", function () {
+        loadProductsWithFilters();
+      });
+
+      $(".category-block-filter input:checkbox").on("change", function () {
+        loadProductsWithFilters();
+      });
+
+      $(".parent_category_chk").click(function () {
+        var category = $(this).val();
+        $(this)
+          .closest(".category-block-filter")
+          .find(".child-" + category)
+          .prop("checked", this.checked);
+      });
+    });
+    //function for removoing the address and append
+    function loadProductsWithFilters() {
+      //this exception is used for url editing this wont allow to overwrite and helps handling query
+      var url =
+        "";
+
+      if ($("#filter_price_start").val() != "") {
+        url = url + "&price-start=" + $("#filter_price_start").val();
+      }
+
+      if ($("#filter_price_end").val() != "") {
+        url = url + "&price-end=" + $("#filter_price_end").val();
+      }
+      //attribute will come in v
+      var query = "&brand=";
+      var brand_checked = false;
+      $("input.filter_by_brand").each(function (i, v) {
+        //check html(v) is checked or not
+        if ($(v).is(":checked")) {
+          brand_checked = true;
+          query = query + $(v).val() + ",";
+        }
+      });
+
+      if (brand_checked) url = url + query.slice(0, -1);
+
+      url = url + "&stock=" + $("input[name=filter_stock]:checked").val();
+
+      var query = "&filter-category=";
+      $(".category-block-filter")
+        .find("input:checkbox")
+        .each(function (i, v) {
+          if ($(v).is(":checked")) {
+            query = query + $(v).val() + ",";
+          }
+        });
+
+      url = url + query.slice(0, -1);
+      pullProducts(url);
+    }
+
+    function pullProducts(url) {
+      $("#product-list-wrapper").html("");
+      $("#product-list-wrapper").html(
+        '<div style="margin: 0 auto;"><i class="fa fa-spinner fa-spin fa-5x" style="margin: 0 auto;" aria-hidden="true"></i></div>'
+      );
+
+      $.ajax({
+        method: "GET",
+        url: url,
+        success: function (response) {
+          var data = $.parseJSON(response);
+          if (data.html == "") {
+            $("#product-list-wrapper")
+              .html("")
+              .html(
+                '<li class="col-md-12 center"><strong style="padding: 100px;">No Data Matching Filter</strong><li>'
+              );
+          } else {
+            $("#product-list-wrapper").html("").html(data.html);
+          }
+        },
+      });
+    }
+  </script>
+{% endblock content %}

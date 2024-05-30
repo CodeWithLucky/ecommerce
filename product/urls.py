@@ -7,10 +7,11 @@ from . import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('products/', views.products_view, name='products'), 
-    path('category/<int:category_id>/', views.products_category_view, name='products-by-category'), 
+    path('products_detail/<int:product_id>/', views.products_detail, name='products_detail'), 
+    path('products-by-category/', views.products_category_view, name='products_by_category'),
     path('contact/',views.contact_view,name="contacts"), 
     path('cart/',views.cart_view,name="cart"),
-    path('checkout/',views.checkout_view,name="checkout")
+    path('checkout/',views.checkout_view,name="checkout"),
     # path('category/',views,name=""),
     # path('brand/',views,name="")
 ]

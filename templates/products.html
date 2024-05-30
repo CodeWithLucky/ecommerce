@@ -11,13 +11,13 @@
         <div class="block block-breadcrumbs">
           <ul>
             <li class="home">
-              <a href="https://zenithsuppliers.com.np"
+              <a href=""
                 ><i class="fa fa-home"></i
               ></a>
               <span></span>
             </li>
             <li>
-              <a href="https://zenithsuppliers.com.np/search">Search</a>
+              <a href="">Search</a>
               <span></span>
             </li>
           </ul>
@@ -34,11 +34,7 @@
                   <ul class="tree-menu">
                     {% for category in categories %}
                     <li class="active">
-                      <a
-                        onclick="location.href="#""
-                        href="#"
-                        >{{category.title}}</a
-                      >
+                      <a href="{% url 'products_by_category' %}">{{category.title}}</a>
                       <ul></ul>
                     </li>
                     {% endfor %}
@@ -109,6 +105,7 @@
                   <div class="block-sub-title">Manufacturer</div>
                   <div class="block-filter-inner">
                     <ul class="check-box-list">
+                      {% for manufacturers in manufacturer %}
                       <li>
                         <input
                           type="checkbox"
@@ -119,100 +116,10 @@
                         />
                         <label for="acer">
                           <span class="button"></span>
-                          Acer<span class="count">(0)</span>
+                          {{manufacturers.brand_name}}<span class="count">(0)</span>
                         </label>
                       </li>
-                      <li>
-                        <input
-                          type="checkbox"
-                          id="apple"
-                          class="filter_by_brand"
-                          name="cc"
-                          value="apple"
-                        />
-                        <label for="apple">
-                          <span class="button"></span>
-                          Apple<span class="count">(0)</span>
-                        </label>
-                      </li>
-                      <li>
-                        <input
-                          type="checkbox"
-                          id="dell"
-                          class="filter_by_brand"
-                          name="cc"
-                          value="dell"
-                        />
-                        <label for="dell">
-                          <span class="button"></span>
-                          Dell<span class="count">(2)</span>
-                        </label>
-                      </li>
-                      <li>
-                        <input
-                          type="checkbox"
-                          id="hikvision"
-                          class="filter_by_brand"
-                          name="cc"
-                          value="hikvision"
-                        />
-                        <label for="hikvision">
-                          <span class="button"></span>
-                          Hikvision<span class="count">(31)</span>
-                        </label>
-                      </li>
-                      <li>
-                        <input
-                          type="checkbox"
-                          id="hp"
-                          class="filter_by_brand"
-                          name="cc"
-                          value="hp"
-                        />
-                        <label for="hp">
-                          <span class="button"></span>
-                          HP<span class="count">(0)</span>
-                        </label>
-                      </li>
-                      <li>
-                        <input
-                          type="checkbox"
-                          id="lenovo"
-                          class="filter_by_brand"
-                          name="cc"
-                          value="lenovo"
-                        />
-                        <label for="lenovo">
-                          <span class="button"></span>
-                          Lenovo<span class="count">(0)</span>
-                        </label>
-                      </li>
-                      <li>
-                        <input
-                          type="checkbox"
-                          id="luminous"
-                          class="filter_by_brand"
-                          name="cc"
-                          value="luminous"
-                        />
-                        <label for="luminous">
-                          <span class="button"></span>
-                          Luminous<span class="count">(4)</span>
-                        </label>
-                      </li>
-                      <li>
-                        <input
-                          type="checkbox"
-                          id="sony"
-                          class="filter_by_brand"
-                          name="cc"
-                          value="sony"
-                        />
-                        <label for="sony">
-                          <span class="button"></span>
-                          Sony<span class="count">(0)</span>
-                        </label>
-                      </li>
+                      {% endfor %}
                     </ul>
                   </div>
                 </div>
@@ -250,82 +157,52 @@
             </div>
           </div>
           <div class="col-xs-12 col-sm-8 col-md-9">
-            <h3 class="page-title">
-              <span>Search For:</span>
-              <span>All Categories</span>
-              <a href="#" class="button-radius compare-link"
-                >Compare (1)<span class="icon"></span
-              ></a>
-            </h3>
             <div class="sortPagiBar">
               <div class="sortPagiBar-inner">
-                <nav>
-                  <ul class="pagination">
-                    <nav>
+                  <nav>
                       <ul class="pagination">
-                        <li
-                          class="page-item disabled"
-                          aria-disabled="true"
-                          aria-label="&laquo; Previous"
-                        >
-                          <span class="page-link" aria-hidden="true"
-                            >&lsaquo;</span
-                          >
-                        </li>
-
-                        <li class="page-item active" aria-current="page">
-                          <span class="page-link">1</span>
-                        </li>
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href="https://zenithsuppliers.com.np/search?category=all&amp;page=2"
-                            >2</a
-                          >
-                        </li>
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href="https://zenithsuppliers.com.np/search?category=all&amp;page=3"
-                            >3</a
-                          >
-                        </li>
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href="https://zenithsuppliers.com.np/search?category=all&amp;page=4"
-                            >4</a
-                          >
-                        </li>
-
-                        <li class="page-item">
-                          <a
-                            class="page-link"
-                            href="https://zenithsuppliers.com.np/search?category=all&amp;page=2"
-                            rel="next"
-                            aria-label="Next &raquo;"
-                            >&rsaquo;</a
-                          >
-                        </li>
+                          {% if products.has_previous %}
+                          <li class="page-item">
+                              <a class="page-link" href="?page={{ products.previous_page_number }}" aria-label="Previous">
+                                  <span aria-hidden="true">&lsaquo;</span>
+                              </a>
+                          </li>
+                          {% endif %}
+          
+                          {% for num in products.paginator.page_range %}
+                          {% if products.number == num %}
+                          <li class="page-item active">
+                              <span class="page-link">{{ num }}</span>
+                          </li>
+                          {% else %}
+                          <li class="page-item">
+                              <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                          </li>
+                          {% endif %}
+                          {% endfor %}
+          
+                          {% if products.has_next %}
+                          <li class="page-item">
+                              <a class="page-link" href="?page={{ products.next_page_number }}" aria-label="Next">
+                                  <span aria-hidden="true">&rsaquo;</span>
+                              </a>
+                          </li>
+                          {% endif %}
                       </ul>
-                    </nav>
-                  </ul>
-                </nav>
-
-                <div class="sort-product">
-                  <select id="product-sorting">
-                    <option value="recent-product-first">
-                      Recent Product First
-                    </option>
-                    <option value="older-product-first">
-                      Older Product First
-                    </option>
-                    <option value="price-high-to-low">Price High to Low</option>
-                    <option value="price-low-to-high">Price Low to High</option>
-                  </select>
-                </div>
+                  </nav>
+          
+                  <div class="sort-product">
+                      <select id="product-sorting">
+                          <option value="recent-product-first">Recent Product First</option>
+                          <option value="older-product-first">Older Product First</option>
+                          <option value="price-high-to-low">Price High to Low</option>
+                          <option value="price-low-to-high">Price Low to High</option>
+                      </select>
+                  </div>
               </div>
-            </div>
+          </div>
+          
+          
 
             <div class="category-products">
               <ul class="products row" id="product-list-wrapper">
@@ -337,7 +214,7 @@
                       <div class="product-thumb">
                         <a style="height:250px; width:250px;"
                           class="product-img"
-                          href="https://zenithsuppliers.com.np/ups/eco-watt-neo-1650"
+                          href=""
                         >
                           <img src="{{ product.image.url }}" alt="Product" />
                         </a>
@@ -353,7 +230,7 @@
                     <div class="product-right">
                       <div class="product-name">
                         <a
-                          href="https://zenithsuppliers.com.np/ups/eco-watt-neo-1650"
+                          href="{% url 'products_detail' product.id %}"
                         >
                           {{product.title}}
                         </a>
@@ -427,21 +304,21 @@
                         <li class="page-item">
                           <a
                             class="page-link"
-                            href="https://zenithsuppliers.com.np/search?category=all&amp;page=2"
+                            href=""
                             >2</a
                           >
                         </li>
                         <li class="page-item">
                           <a
                             class="page-link"
-                            href="https://zenithsuppliers.com.np/search?category=all&amp;page=3"
+                            href=""
                             >3</a
                           >
                         </li>
                         <li class="page-item">
                           <a
                             class="page-link"
-                            href="https://zenithsuppliers.com.np/search?category=all&amp;page=4"
+                            href=""
                             >4</a
                           >
                         </li>
@@ -449,7 +326,7 @@
                         <li class="page-item">
                           <a
                             class="page-link"
-                            href="https://zenithsuppliers.com.np/search?category=all&amp;page=2"
+                            href=""
                             rel="next"
                             aria-label="Next &raquo;"
                             >&rsaquo;</a
@@ -560,17 +437,17 @@
           });
 
         //category search top
-        $("#top-header-submit-btn").click(function () {
+        {% comment %} $("#top-header-submit-btn").click(function () {
           console.log("clicked");
           var category = $("#category-select-id").val();
           var key = $("#top-search-key").val();
-          var url = "https://zenithsuppliers.com.np/search";
+          var url = "";
           url = url + "?category=" + category;
           if (key !== "") {
             url = url + "&key=" + key;
           }
           location.href = url;
-        });
+        }); {% endcomment %}
 
         $("body").on("click", ".grid-add-to-cart-btn", function () {
           $.ajax({
@@ -645,7 +522,7 @@
       //filter
       $(document).ready(function () {
         $("#product-sorting").change(function () {
-          var url = "https://zenithsuppliers.com.np/search?category=all";
+          var url = "";
           location.href = url + "&sorting=" + $(this).val();
         });
       });
@@ -683,7 +560,7 @@
       function loadProductsWithFilters() {
         //this exception is used for url editing this wont allow to overwrite and helps handling query
         var url =
-          "https://zenithsuppliers.com.np/ajax-products-rows?category=all";
+          "";
 
         if ($("#filter_price_start").val() != "") {
           url = url + "&price-start=" + $("#filter_price_start").val();
