@@ -310,56 +310,57 @@
     </div>
     <div class="block-inner">
         <ul class="products kt-owl-carousel" data-margin="20" data-loop="true" data-nav="true" data-responsive='{"0":{"items":1},"600":{"items":3},"1000":{"items":5}}'>
-            <li class="product ">
+                                                <li class="product ">
                     
-                {% for latest_product in latest_products %}
-                <div class="product-container">
-                    <div class="product-left">
-                        <div class="product-thumb">
-                            <a style="height:200px; width:200px;" class="product-img" href="https://zenithsuppliers.com.np/hikvision/32-channel-4k-nvr-ds-7732ni-k4">
-                                <img src={{latest_product.image.url}} alt="Product">
-                            </a>
-                            <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
-                        </div>
-                        <div class="product-status">
-                            <span class="new">New</span>
-                            <span class="sale">Sale</span>
-                        </div>
-                    </div>
-                    <div class="product-right">
-                        <div class="product-name">
-                            <a href="https://zenithsuppliers.com.np/hikvision/32-channel-4k-nvr-ds-7732ni-k4">
-                                {{latest_product.title}}
-                            </a>
-                        </div>
-                        <div class="price-box">
-                            <span class="product-price">Rs. {{latest_product.new_price}} </span>
-                            <span class="product-price-old">Rs. {{latest_product.old_price}}</span>
-                        </div>
-                        <div class="product-star">
-                            <i class="fa fa-star-o"></i>
-                
-            
-                        <i class="fa fa-star-o"></i>
-                
-            
-                        <i class="fa fa-star-o"></i>
-                
-            
-                        <i class="fa fa-star-o"></i>
-                
-            
-                        <i class="fa fa-star-o"></i>
-                
-                        </div>
-                        <div class="product-button">
-                            <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
-                            <a class="btn-add-comparre grid-add-to-compare" attr-slug="32-channel-4k-nvr-ds-7732ni-k4" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
-                            <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="32-channel-4k-nvr-ds-7732ni-k4">Buy<span class="icon"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </li>                                   
+    {% for latest_product in latest_products %}
+    <div class="product-container">
+        <div class="product-left">
+            <div class="product-thumb">
+                <a style="height:200px; width:200px;" class="product-img" href="https://zenithsuppliers.com.np/hikvision/32-channel-4k-nvr-ds-7732ni-k4">
+                    <img src={{latest_product.image.url}} alt="Product">
+                </a>
+                <a title="Quick View" href="#" class="btn-quick-view">Quick View</a>
+            </div>
+            <div class="product-status">
+                <span class="new">New</span>
+                <span class="sale">Sale</span>
+            </div>
+        </div>
+        <div class="product-right">
+            <div class="product-name">
+                <a href="https://zenithsuppliers.com.np/hikvision/32-channel-4k-nvr-ds-7732ni-k4">
+                    {{latest_product.title}}
+                </a>
+            </div>
+            <div class="price-box">
+                <span class="product-price">Rs. {{latest_product.new_price}} </span>
+                <span class="product-price-old">Rs. {{latest_product.old_price}}</span>
+            </div>
+            <div class="product-star">
+                <i class="fa fa-star-o"></i>
+    
+
+            <i class="fa fa-star-o"></i>
+    
+
+            <i class="fa fa-star-o"></i>
+    
+
+            <i class="fa fa-star-o"></i>
+    
+
+            <i class="fa fa-star-o"></i>
+    
+            </div>
+            <div class="product-button">
+                <a class="btn-add-wishlist" title="Add to Wishlist" href="#">Add Wishlist</a>
+                <a class="btn-add-comparre grid-add-to-compare" attr-slug="32-channel-4k-nvr-ds-7732ni-k4" title="Add to Compare" href="javascript:void(0);">Add Compare</a>
+                <a class="button-radius btn-add-cart grid-add-to-cart-btn" title="Add to Cart" href="javascript:void(0);" attr-slug="32-channel-4k-nvr-ds-7732ni-k4">Buy<span class="icon"></span></a>
+            </div>
+        </div>
+    </div>
+</li>
+                                    
 
 {% endfor %}
 

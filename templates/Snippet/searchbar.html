@@ -7,16 +7,25 @@
           <div class="advanced-search box-radius">
             
               <form method="GET" action={% url "products" %} class="form-inline" id="top-header-search">
-                  <div class="form-group search-category col-4 col-lg-4 col-sm-4">
+                  <div class="form-group search-category col-4 col-lg-2 col-sm-4">
                       <select id="category-select-id" class="search-category-select">
                           <option value="all">All Categories &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </option>
 
                           {% for category in categories %}
-                                                                                                              <option value={{category.title}}>    <span> {{category.title}} </span></option>
-                                                                                                              {% endfor %}
-                                                                                                  </select>
+                            <option value={{category.title}}>    <span> {{category.title}} </span></option>
+                          {% endfor %}
+                      </select>
                   </div>
-                  <div class="form-group search-input" style="width:60%;">
+                  <div class="form-group search-category col-4 col-lg-3 col-sm-4">
+                    <select id="category-select-id" class="search-category-select">
+                        <option value="all">Sub Categories &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </option>
+
+                        {% for sub_category in sub_cat %}
+                           <option value={{sub_category.title}}>    <span> {{sub_category.title}} </span></option>
+                         {% endfor %}
+                    </select>
+                </div>
+                  <div class="form-group search-input" style="width:50%;">
                     {% csrf_token %}
                     <input type="text" name="search" id="top-search-key" placeholder="What are you looking for?" value="{{ search_query }}" style="width:100%">
                   </div>
@@ -73,3 +82,34 @@
 
   </div>
 </div>
+<!-- // ajax for category wise filter -->
+
+<script>  
+      {% for category in categories %}
+      $('#filter_by_category-{{ category.id }}').on('click', function() {
+          var id = $(this).data('id');
+        
+          $.ajax({
+            method: "POST",
+            url: "{% url "products" %}",
+            data:{
+              csrfmiddlewaretoken:"{{csrf_token}}",
+              category_id:id,
+
+            },
+            success: function (response) {
+              var data = $.parseJSON(response);
+              if (data.html == "") {
+                $("#product-list-wrapper")
+                  .html("")
+                  .html(
+                    '<li class="col-md-12 center"><strong style="padding: 100px;">No Data Matching Filter</strong><li>'
+                  );
+              } else {
+                $("#product-list-wrapper").html("").html(data.html);
+              }
+            },
+          }); 
+      });
+      {% endfor %}
+</script>

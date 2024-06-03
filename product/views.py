@@ -48,6 +48,7 @@ def products_view(request):
     # Retrieve categories, subcategories, and manufacturers
     categories = Category.objects.all()
     sub_categories = Category.objects.prefetch_related('subcategories').all()
+    sub_cat = SubCategory.objects.all()
     manufacturers = Brand.objects.all()
     
     product_ids = request.POST.get('category_id')
@@ -59,9 +60,11 @@ def products_view(request):
             product_ids = int(product_ids)
             # Filter products based on the selected category
             products = Product.objects.filter(SubCategory__parent_category_id=product_ids)
+            
         except ValueError:
             print("Invalid category ID")
             pass
+    
 
     # if product_ids:
     #     try:
@@ -98,6 +101,7 @@ def products_view(request):
         'product-list' : product_ids,
         'categories': categories,
         'sub_categories': sub_categories,
+        'sub_cat': sub_cat,
         'manufacturer': manufacturers,
         'product_sort' : products,
     }
