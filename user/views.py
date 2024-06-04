@@ -3,8 +3,7 @@ from django.views import View
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate,login
-from .models import UserInfo, AccountInfo, Role
-from . form import UserForm, AccountInfoForm, RoleForm
+from .models import CustomUser
 
 User = get_user_model()
 
@@ -74,7 +73,7 @@ def login_view(request):
         if user is not None:
             
             login(request, user)
-            return redirect('dashboard')
+            return redirect('index')
         else:
             return render(request, 'sign-in.html', {'error': 'Email or Password is incorrect'})              
     return render(request, 'login.html')
@@ -88,7 +87,8 @@ def signup_view(request):
         password = request.POST['password']
         sex = request.POST['selected']
         date_of_birth = request.POST['dateofbirth']
-        user = User.objects.create_user(first_name=first_name,last_name=last_name,username=username,emai=email,sex=sex,date_of_birth=date_of_birth,password=password)
+        user = User.objects.create_user(first_name=first_name,last_name=last_name,username=username,email=email,sex=sex,date_of_birth=date_of_birth,password=password)
+        print(user)
         user.save()
         return redirect('login')
 
