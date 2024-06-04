@@ -2,6 +2,12 @@ from django.db import models
 from django.utils.text import slugify
 from django.utils import timezone
 from .validators import validate_image_format
+from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+from django.conf import settings
+
+
+User = get_user_model()
 
 class Category(models.Model):
     title = models.CharField(max_length=50)
@@ -98,7 +104,7 @@ class Product(models.Model):
     new_price = models.FloatField()
     old_price = models.FloatField()
     quantity = models.IntegerField()
-    image = models.ImageField(upload_to='product_image/', max_length=500, null=True, blank=True, validators=[validate_image_format])
+    image = models.ImageField(upload_to='product_image/', max_length=500, null=True, blank=True, validators=[validate_image_format]),
     short_description = models.TextField()
     long_description = models.TextField()
     added_at = models.DateTimeField(default=timezone.now)
@@ -112,3 +118,11 @@ class Product(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         super(Product, self).save(*args, **kwargs)
+
+class ProductImage(models.Model):
+    images = models.ImageField(upload_to='Gallery', null = True, blank= True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
+
+
+

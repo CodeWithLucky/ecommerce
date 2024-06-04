@@ -1,13 +1,30 @@
 <div class="block-inner">
-    <div class="block-list-category">
-      <p>All Categories</p>
-      <ul class="tree-menu">
-        {% for category in categories %}
-        <li class="active">
-          <a id="filter_by_category-{{category.id}}" data-id="{{category.id}}">{{category.title}}</a>
-          <ul></ul>
-        </li>
-        {% endfor %}
-      </ul>
-    </div>
+  <div class="block-list-category" style="max-height: 300px; overflow-y: auto;">
+    <p>All Categories</p>
+    <ul class="tree-menu">
+      {% for category in categories %}
+      {% if forloop.counter <= 8 %}
+                  <li class="active">
+                      <a id="filter_by_category-{{category.id}}" data-id="{{category.id}}">{{category.title}}</a>
+                      <ul></ul>
+                  </li>
+              {% else %}
+                  <li class="hidden-category" style="display: none;">
+                      <a id="filter_by_category-{{category.id}}" data-id="{{category.id}}">{{category.title}}</a>
+                      <ul></ul>
+                  </li>
+              {% endif %}
+          {% endfor %}
+    </ul>
+    <button id="show-more">Show More</button>
   </div>
+</div>
+<script>
+  document.getElementById('show-more').addEventListener('click', function() {
+      var hiddenCategories = document.querySelectorAll('.hidden-category');
+      hiddenCategories.forEach(function(category) {
+          category.style.display = 'list-item';
+      });
+      this.style.display = 'none'; // Hide the "Show More" button
+  });
+</script> 

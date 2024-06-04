@@ -1,8 +1,11 @@
+from django.http import JsonResponse
+from django.template.loader import render_to_string
 from django.shortcuts import render,get_object_or_404
 from django.http import Http404
 from . models import Product,Tag,Category,Status,SubCategory,Brand,Attribute,Attribute_Group,Currency
-from . filters import ProductFilter
 from django.core.paginator import Paginator
+from . forms import *
+from .models import *
 
 # Create your views here.
 def index(request):
@@ -32,14 +35,12 @@ def index(request):
         'currency' : currency,
         'latest_products' : latest_products,
         'recommend_products' : recommend_products
+        
     }
         
 
     return render(request, 'index.html',context)
 
-from django.core.paginator import Paginator
-from django.shortcuts import render
-from .models import Product, Category, Brand
 
 def products_view(request):
     # Retrieve all products initially
@@ -139,17 +140,6 @@ def products_category_view(request):
         'manufacturer' : manufacturer,
         # 'sort_by':sort_by
     }
-    # categories = Category.objects.all()
-    # category_products = {}
-
-    # for category in categories:
-    #     subcategories = category.subcategories.all()
-    #     products = Product.objects.filter(subcategory__in=subcategories).order_by('-added_at')
-    #     category_products[category] = products
-
-    # context = {
-    #     'category_products': category_products
-    # }
 
     return render(request, 'products_by_category.html')
 
@@ -168,27 +158,45 @@ def products_detail(request, product_id):
 def contact_view(request):
     return render(request, 'contact.html')
 
+
 def cart_view(request):
+    
     return render(request, 'cart.html')
 
 def checkout_view(request):
     return render(request, 'checkout.html')
 
 
+def products_by_bar(request):
 
-
-
-
-# def products_view(request):
-#     product = Product.objects.all()
-#     recommended_products = products_recommend(request)
-
-
-#     context = {
-#         'products': product,
-#         'recommended_products': recommended_products,
+    product_ids = request.POST.get('category_id')
+    if product_ids:
+        try:
+            # Convert product_ids to an integer
+            product_ids = int(product_ids)
+            # Filter products based on the selected category
+            products = Product.objects.filter(SubCategory__parent_category_id=product_ids)
+            print(products)
+            html = render_to_string('Snippet/product-bar.html', {'products': products})
         
-#     }
-#     return render (request,'products.html')
+        # Return the HTML inside a JSON response
+            return JsonResponse({'html': html})
+        except ValueError:
+            print("Invalid category ID")
+            pass
+    else:
+            return JsonResponse({'html': ''})
+    
+    
+    context = {
+
+        'products' : products,
+    }
+
+
+
+    return render(request, 'product-bar.html',context)
+
+
 
 

@@ -1,0 +1,33 @@
+<div class="block-filter">
+    <div class="block-sub-title">Manufacturer</div>
+    <div class="block-filter-inner">
+      <ul class="check-box-list">
+        {% for manufacturers in manufacturer %}
+            {% if forloop.counter <= 8 %}
+            <li>
+            <input
+                type="checkbox"
+                id="acer"
+                class="filter_by_brand"
+                name="cc"
+            />
+            <label for="acer">
+                <span class="button"></span>
+                {{manufacturers.brand_name}}<span class="count">(0)</span>
+            </label>
+            </li>
+            {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+<script>
+  document.getElementById('show-more').addEventListener('click', function() {
+      var hiddenCategories = document.querySelectorAll('.hidden-category');
+      hiddenCategories.forEach(function(category) {
+          category.style.display = 'list-item';
+      });
+      this.style.display = 'none'; // Hide the "Show More" button
+  });
+</script> 

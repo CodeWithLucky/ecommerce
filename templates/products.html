@@ -32,12 +32,18 @@
                 {% include "Snippet/category-sidebar.html" %}              
             </div>
               <!-- filter-sidebar-->
-
-          </div>
+              <!-- price-sidebar-->
+                {% include "Snippet/price-sidebar.html" %}
+              <!-- manufacturer-sidebar-->
+                {% include "Snippet/manufacturer-sidebar.html" %}
+              <!-- availability-sidebar-->
+                {% include "Snippet/availability-sidebar.html" %}
+              </div>
           <div class="col-xs-12 col-sm-8 col-md-9">
             <div class="sortPagiBar">
               <div class="sortPagiBar-inner">
                   <nav>
+                    
                       <ul class="pagination">
                           {% if products.has_previous %}
                           <li class="page-item">
@@ -60,6 +66,7 @@
                           {% endfor %}
           
                           {% if products.has_next %}
+                
                           <li class="page-item">
                               <a class="page-link" href="?page={{ products.next_page_number }}" aria-label="Next">
                                   <span aria-hidden="true">&rsaquo;</span>
@@ -68,6 +75,7 @@
                           {% endif %}
                       </ul>
                   </nav>
+
           
                   <div class="sort-product">
                       <select id="product-sorting">
@@ -398,27 +406,25 @@
          
            $.ajax({
             method: "POST",
-            url: "{% url "products" %}",
+            url: "{% url "products-by-bar" %}",
             data:{
               csrfmiddlewaretoken:"{{csrf_token}}",
               category_id:id,
 
             },
             success: function (response) {
-              var data = $.parseJSON(response);
-              if (data.html == "") {
-                $("#product-list-wrapper")
-                  .html("")
-                  .html(
-                    '<li class="col-md-12 center"><strong style="padding: 100px;">No Data Matching Filter</strong><li>'
-                  );
-              } else {
-                $("#product-list-wrapper").html("").html(data.html);
-              }
+              
+              console.log(response)
+              
+              if (!response.html) {
+                $("#product-list-wrapper").html('<li class="col-md-12 center"><strong style="padding: 100px;">No Data Matching Filter</strong></li>');
+            } else {
+                $("#product-list-wrapper").html(response.html);
+            }
             },
           }); 
-      });
-  {% endfor %}
+        });
+      {% endfor %}
 
     </script>
 

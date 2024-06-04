@@ -70,8 +70,13 @@ class AttributeAdmin(admin.ModelAdmin):
         'status'
     ]
 
+class ProductImageInline(admin.TabularInline):
+    model = ProductImage
+    extra = 1
+
 class ProductAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
+    inlines = [ProductImageInline]
     list_display = [
         'SubCategory',
         'brand',
@@ -82,6 +87,7 @@ class ProductAdmin(admin.ModelAdmin):
         'quantity',
         'slug'
     ]
+    
 
 
 admin.site.register(SubCategory, SubCategoryAdmin)

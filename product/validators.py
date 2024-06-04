@@ -15,3 +15,13 @@ def validate_image_format(image):
     except (IOError, SyntaxError) as e:
         raise ValidationError('Invalid image file')
 
+
+    max_width = 800  # set your desired max width
+    max_height = 600  # set your desired max height
+
+    img = Image.open(image)
+    width, height = img.size
+
+    if width != max_width or height != max_height:
+        raise ValidationError(f'Image dimensions should be {max_width}x{max_height}px.')
+

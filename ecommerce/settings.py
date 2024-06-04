@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'product',
     'user',
     'django_seed',
-
 ]
 
 MIDDLEWARE = [
@@ -146,3 +145,5 @@ MEDIA_URL = '/media/'
 
 # Define the directory where uploaded files will be stored
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+AUTH_USER_MODEL = "user.CustomUser"

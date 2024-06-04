@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
+from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+from django.contrib.auth import authenticate,login
 from .models import UserInfo, AccountInfo, Role
 from . form import UserForm, AccountInfoForm, RoleForm
+
+User = get_user_model()
 
 class UserListView(View):
     def get(self, request):
@@ -60,5 +65,31 @@ class RoleListView(View):
         return render(request, 'role_list.html', {'roles': roles})
 
 
-# def login_view(request):
-#     return r    
+def login_view(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        print(email,password)  
+        user = authenticate(email=email, password=password)
+        if user is not None:
+            
+            login(request, user)
+            return redirect('dashboard')
+        else:
+            return render(request, 'sign-in.html', {'error': 'Email or Password is incorrect'})              
+    return render(request, 'login.html')
+    
+def signup_view(request):
+    if request.method == 'POST':
+        first_name = request.POST['firstname']
+        last_name = request.POST['lastname']
+        username = request.POST['username']
+        email = request.POST['email']
+        password = request.POST['password']
+        sex = request.POST['selected']
+        date_of_birth = request.POST['dateofbirth']
+        user = User.objects.create_user(first_name=first_name,last_name=last_name,username=username,emai=email,sex=sex,date_of_birth=date_of_birth,password=password)
+        user.save()
+        return redirect('login')
+
+    return render(request,'signup.html')

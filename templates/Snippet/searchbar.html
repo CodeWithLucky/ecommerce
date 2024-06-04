@@ -21,10 +21,10 @@
                         <option value="all">Sub Categories &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </option>
 
                         {% for sub_category in sub_cat %}
-                           <option value={{sub_category.title}}>    <span> {{sub_category.title}} </span></option>
-                         {% endfor %}
+                          <option value={{sub_category.title}}>    <span> {{sub_category.title}} </span></option>
+                        {% endfor %}
                     </select>
-                </div>
+                  </div>
                   <div class="form-group search-input" style="width:50%;">
                     {% csrf_token %}
                     <input type="text" name="search" id="top-search-key" placeholder="What are you looking for?" value="{{ search_query }}" style="width:100%">
