@@ -13,7 +13,6 @@ urlpatterns = [
     # path('user/delete/<int:user_id>/', UserDeleteView.as_view(), name='user_delete'),
     # path('accounts/', AccountListView.as_view(), name='account_list'),
     # path('roles/', RoleListView.as_view(), name='role_list'),
-    path('admin/customuser/<pk>/delete/', admin.CustomUserAdmin.delete_view, name='customuser_delete'),
     path('login/', login_view, name='login'),
     path('signup/',signup_view,name='signup'),
 ]

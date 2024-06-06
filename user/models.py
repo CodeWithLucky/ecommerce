@@ -23,6 +23,7 @@ class CustomUser(AbstractUser):
     linkedin_profile = models.URLField("LinkedIn profile URL", max_length=200, blank=True)
     instagram_handle = models.CharField("Instagram handle", max_length=30, blank=True)
     preferences = models.JSONField("preferences", blank=True, null=True)
+    
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'date_of_birth']

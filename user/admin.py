@@ -26,34 +26,7 @@ class UserAdmin(admin.ModelAdmin):
     list_display = [
         'first_name', 'last_name', 'email', 'sex'
     ]
-from django.shortcuts import redirect
-
-class CustomUserAdmin(admin.ModelAdmin):
-    list_display = ('first_name', 'last_name', 'email', 'sex', 'delete_button')
-    search_fields = ('first_name', 'last_name', 'email')
-
-    def delete_button(self, obj):
-        return format_html(
-            '<a class="button" href="{}">Delete</a>',
-            reverse('admin:customuser_delete', args=[obj.pk])
-        )
-    delete_button.short_description = 'Delete User'
-    delete_button.allow_tags = True
-
-    @staff_member_required
-    def delete_view(self, request, pk):
-        obj = self.get_object(request, pk)
-        if obj:
-            obj.delete()
-            return redirect(reverse('admin:customuser_changelist'))
-        return redirect(reverse('admin:customuser_changelist'))
-
-    class Media:
-        css = {
-            'all': ('admin/css/custom_admin.css',)  # Use custom CSS if needed
-        }
-
-admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(CustomUser, UserAdmin)
 
 
 @admin.register(Role)
