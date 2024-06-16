@@ -24,7 +24,7 @@
           <div class="product-right">
             <div class="product-name">
               <a
-                href="{% url 'products_detail' product.id %}"
+                href="{% url 'product_detail' product.id %}"
               >
                 {{product.title}}
               </a>
@@ -65,9 +65,9 @@
               <a
                 class="button-radius btn-add-cart grid-add-to-cart-btn"
                 title="Add to Cart"
-                href="javascript:void(0);"
+                href="{% url "product_detail" product.id %}"
                 attr-slug="eco-watt-neo-1650"
-                >Buy<span class="icon"></span
+                >Detail<span class="icon"></span
               ></a>
             </div>
           </div>

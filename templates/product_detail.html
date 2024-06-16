@@ -88,7 +88,7 @@
                                     <input type="text" class="quantity" id="quantity" value="1">
                                     <a href="javascript:void(0);" class="quantity-plus" id="quantity-plus">+</a>
                                 </div>
-                                <a href="javascript:void(0);" class="button-radius btn-add-cart" id="add-to-cart-btn" attr-slug="{{ product.slug }}">Buy<span class="icon"></span></a>
+                                <a href="{% url "add_cart" product.id %}" class="button-radius btn-add-cart" id="add-to-cart-btn">Add to Cart<span class="icon"></span></a>
                             </td>
                         </tr>
                     </table>

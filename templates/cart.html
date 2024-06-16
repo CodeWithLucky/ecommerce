@@ -3,81 +3,95 @@
     {% include "Snippet/topbar.html" %}
     {% include "Snippet/banner.html" %} 
     {% include "Snippet/navbar.html" %}
-        <div class="container">
+    <div class="container">
         <!-- Searchbar -->
         {% include "Snippet/searchbar.html" %}
         <!-- ./Searchbar -->
-        </div>
+    </div>
 {% endblock header %}
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="block block-breadcrumbs">
-            <ul>
-                <li class="home">
-                    <a href="#"><i class="fa fa-home"></i></a>
-                    <span></span>
-                </li>
-                <li>Cart</li>
-            </ul>
-        </div>
-        <div class="main-page">
-            <h1 class="page-title">Shopping Cart Summary</h1>
-            <div class="page-content page-order">
-                <ul class="step">
-                    <li class="current-step"><span>01. Summary</span></li>
-                    <li><span>02. Sign in</span></li>
-                    <li><span>03. Address</span></li>
-                    <li><span>04. Shipping</span></li>
-                    <li><span>05. Payment</span></li>
-                </ul>
-                <div class="heading-counter warning">Your shopping cart contains:
-                    <span id="cart_count_info">0 Product</span>
-                </div>
-                <div class="order-detail-content">
-                    <table class=" table table-bordered table-responsive cart_summary">
-<thead>
-<tr>
-    <th class="cart_product">Product</th>
-    <th>Description</th>
-    <th>Avail.</th>
-    <th>Unit price</th>
-    <th>Qty</th>
-    <th>Total</th>
-    <th class="action"><i class="fa fa-trash-o"></i></th>
-</tr>
-</thead>
-<tbody>
-        <tr>
-<td colspan="2" rowspan="2"></td>
-<td colspan="3">No items in the cart</td>
-<td colspan="2">&nbsp;</td>
-</tr>
-    </tbody>
-<tfoot>
-<tr id="no_data">
-    <td colspan="2" rowspan="2"></td>
-    <td colspan="3">&nbsp;</td>
-    <td colspan="2">&nbsp;</td>
-</tr>
-<tr>
-    <td colspan="3"><strong>Total</strong></td>
-    <td colspan="2"><strong><span id="cart_total_amount">Rs. 0</span></strong></td>
-</tr>
-</tfoot>
-</table>
-
-                    <div class="cart_navigation">
-                        <a class="button" href="index.html"><i class="fa fa-angle-left"></i> Continue shopping </a>
-                        <a class="button pull-right" href={% url "checkout" %}>Proceed to checkout <i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</div>
+<section class="section-content padding-y bg">
+    <div class="container">
+        <div class="row">
+            <aside class="col-lg-9">
+                <div class="card">
+                    <table class="table table-borderless table-shopping-cart">
+                        <thead class="text-muted">
+                            <tr class="small text-uppercase">
+                                <th scope="col">Product</th>
+                                <th scope="col" width="120">Quantity</th>
+                                <th scope="col" width="120">Price</th>
+                                <th scope="col" class="text-right" width="200"> </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for cart_item in cart_items %}
+                                <tr>
+                                    <td>
+                                        <figure class="itemside align-items-center">
+                                            <div class="aside">
+                                                <img src="{{ cart_item.product.image.url }}" class="img-sm"> <!-- Assuming you have an image field -->
+                                            </div>
+                                            <figcaption class="info">
+                                                <a href="#" class="title text-dark">{{ cart_item.product.title }}</a>
+                                                <p class="text-muted small">Matrix: 25 Mpx <br> Brand:</p>
+                                            </figcaption>
+                                        </figure>
+                                    </td>
+                                    <td>
+                                        <div class="input-group input-spinner">
+                                            <div class="input-group-prepend">
+                                                <a href={% url "reduce_cart_item" cart_item.product.id %} class="btn btn-light" type="button" id="button-minus"> <i class="fa fa-minus"></i> </a>
+                                            </div>
+                                            <input type="text" class="form-control" value="{{ cart_item.quantity }}">
+                                            <div class="input-group-append">
+                                                <a href={% url "add_cart" cart_item.product.id %} class="btn btn-light" type="button" id="button-plus"> <i class="fa fa-plus"></i> </a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="price-wrap">
+                                            <var class="price">Rs.{{ cart_item.sub_total }}</var>
+                                            <small class="text-muted"> Rs.{{ cart_item.product.new_price }} each </small>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <a href="{% url "remove_cart_item" cart_item.product.id %}" class="btn btn-danger"> Remove</a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div> <!-- card.// -->
+            </aside> <!-- col.// -->
+            <aside class="col-lg-3">
+                <div class="card">
+                    <div class="card-body">
+                        <dl class="dlist-align">
+                            <dt>Total price:</dt>
+                            <dd class="text-right">{{ total }}</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Tax:</dt>
+                            <dd class="text-right">{{ vat }}</dd>
+                        </dl>
+                        <dl class="dlist-align">
+                            <dt>Total:</dt>
+                            <dd class="text-right text-dark b"><strong>{{ after_vat_price }}</strong></dd>
+                        </dl>
+                        <hr>
+                        <p class="text-center mb-3">
+                            <img src="./images/misc/payments.png" height="26">
+                        </p>
+                        <a href="{% url 'checkout' %}" class="btn btn-primary btn-block"> Checkout </a>
+                        <a href="./store.html" class="btn btn-light btn-block">Continue Shopping</a>
+                    </div> <!-- card-body.// -->
+                </div> <!-- card.// -->
+            </aside> <!-- col.// -->
+        </div> <!-- row.// -->
+    </div> <!-- container .//  -->
+</section>
 {% endblock content %}
 {% block footer %}
-        {% include "Snippet/footer.html" %}
+    {% include "Snippet/footer.html" %}
 {% endblock footer %}

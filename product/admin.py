@@ -100,3 +100,12 @@ admin.site.register(Tag, TagAdmin)
 admin.site.register(Status, StatusAdmin)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(History)
+
+class MaintenanceAdmin(admin.ModelAdmin):
+    list_display = ['id', 'is_under_maintenance']
+    list_editable = ['is_under_maintenance']
+    list_display_links = ['id']
+
+admin.site.register(Maintenance, MaintenanceAdmin)
+

@@ -403,8 +403,8 @@
       {% for category in categories %}
       $('#filter_by_category-{{ category.id }}').on('click', function() {
           var id = $(this).data('id');
-         
-           $.ajax({
+        
+          $.ajax({
             method: "POST",
             url: "{% url "products-by-bar" %}",
             data:{

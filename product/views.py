@@ -1,45 +1,48 @@
 from django.http import JsonResponse
 from django.template.loader import render_to_string
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404, redirect
 from django.http import Http404
-from . models import Product,Tag,Category,Status,SubCategory,Brand,Attribute,Attribute_Group,Currency
+from . models import Product,Tag,Category,Status,SubCategory,Brand,Attribute,Attribute_Group,Currency, History
 from django.core.paginator import Paginator
 from . forms import *
-from .models import *
+from . models import *
 
 # Create your views here.
 def index(request):
-    product = Product.objects.all()
-    tag = Tag.objects.all()
-    category = Category.objects.all()
-    status = Status.objects.all()
-    sub_category = SubCategory.objects.all()
-    brand = Brand.objects.all()
-    attribute = Attribute.objects.all()
-    attribute_group = Attribute_Group.objects.all()
-    currency = Currency.objects.all()
-    latest_products = Product.objects.order_by('-added_at')[:5]
-    recommend_products = Product.objects.order_by('-views')[:3]
+    if Maintenance.objects.exists() and Maintenance.objects.first().is_under_maintenance:
+        return render(request, 'under_maintenance.html')
+    else:
+        product = Product.objects.all()
+        tag = Tag.objects.all()
+        category = Category.objects.all()
+        status = Status.objects.all()
+        sub_category = SubCategory.objects.all()
+        brand = Brand.objects.all()
+        attribute = Attribute.objects.all()
+        attribute_group = Attribute_Group.objects.all()
+        currency = Currency.objects.all()
+        latest_products = Product.objects.order_by('-added_at')[:5]
+        recommend_products = Product.objects.order_by('-views')[:3]
 
 
 
-    context = {
-        'product' : product,
-        'tag' : tag,
-        'categories' : category,
-        'status' : status,
-        'sub_category' : sub_category,
-        'brand' : brand,
-        'attribute' : attribute,
-        'attribute_group' : attribute_group,
-        'currency' : currency,
-        'latest_products' : latest_products,
-        'recommend_products' : recommend_products
-        
-    }
-        
+        context = {
+            'product' : product,
+            'tag' : tag,
+            'categories' : category,
+            'status' : status,
+            'sub_category' : sub_category,
+            'brand' : brand,
+            'attribute' : attribute,
+            'attribute_group' : attribute_group,
+            'currency' : currency,
+            'latest_products' : latest_products,
+            'recommend_products' : recommend_products
+            
+        }
+            
 
-    return render(request, 'index.html',context)
+        return render(request, 'index.html',context)
 
 
 def products_view(request):
@@ -148,6 +151,10 @@ def products_detail(request, product_id):
     # Increment the view count
     product.views += 1
     product.save()
+
+    history = History.objects.create(product = product)
+
+    history.save()
     
     context = {
         'product': product,
@@ -157,11 +164,6 @@ def products_detail(request, product_id):
 
 def contact_view(request):
     return render(request, 'contact.html')
-
-
-def cart_view(request):
-    
-    return render(request, 'cart.html')
 
 def checkout_view(request):
     return render(request, 'checkout.html')
@@ -197,6 +199,23 @@ def products_by_bar(request):
 
     return render(request, 'product-bar.html',context)
 
+# def maintenance(request):
+#     return render(request, 'under_maintenance.html')
 
+
+def history(request):
+    history = History.objects.all()
+
+    context = {
+        'history' : history
+    }
+
+    return render(request, 'history.html', context)
+
+
+def clear_history(request):
+    history = History.objects.all()
+    history.delete()
+    return redirect('history')
 
 

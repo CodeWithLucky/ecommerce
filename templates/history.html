@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block header %} 
+    {% include "Snippet/topbar.html" %}
+    {% include "Snippet/banner.html" %} 
+    {% include "Snippet/navbar.html" %}
+    <div class="container mx-auto px-4">
+        <!-- Searchbar -->
+        {% include "Snippet/searchbar.html" %}
+        <!-- ./Searchbar -->
+    </div>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+{% endblock header %}
+
+{% block content %}
+<section class="section-content py-8 bg-gray-100">
+    <div class="container mx-auto px-4">
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-semibold">Your Product History</h2>
+                <a href="{% url "clear_history" %}" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">Clear History</a>
+            </div>
+            {% if history %}
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {% for history_item in history %}
+                        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                            <img src="{{ history_item.product.image.url }}" alt="{{ history_item.product.title }}" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold">
+                                    <a href="#" class="text-blue-600 hover:underline">{{ history_item.product.title }}</a>
+                                </h3>
+                                <p class="text-gray-900 mt-2">Rs.{{ history_item.product.new_price }}</p>
+                                <a href="{% url 'product_detail' history_item.product.id %}" class="mt-4 inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">View Product</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <p class="text-center text-gray-500">You have no product history yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block footer %}
+    {% include "Snippet/footer.html" %}
+{% endblock footer %}

@@ -4,64 +4,66 @@ from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate,login
 from .models import CustomUser
+from user.forms import AdminSignUpForm, CustomerSignUpForm
+from django.contrib.auth.decorators import login_required
 
 User = get_user_model()
 
-class UserListView(View):
-    def get(self, request):
-        users = UserInfo.objects.all()
-        return render(request, 'user_list.html', {'users': users})
+# class UserListView(View):
+#     def get(self, request):
+#         users = UserInfo.objects.all()
+#         return render(request, 'user_list.html', {'users': users})
 
-class UserDetailView(View):
-    def get(self, request, user_id):
-        user = get_object_or_404(UserInfo, id=user_id)
-        return render(request, 'user_detail.html', {'user': user})
+# class UserDetailView(View):
+#     def get(self, request, user_id):
+#         user = get_object_or_404(UserInfo, id=user_id)
+#         return render(request, 'user_detail.html', {'user': user})
 
-class UserCreateView(View):
-    def get(self, request):
-        form = UserForm()
-        return render(request, 'user_create.html', {'form': form})
+# class UserCreateView(View):
+#     def get(self, request):
+#         form = UserForm()
+#         return render(request, 'user_create.html', {'form': form})
 
-    def post(self, request):
-        form = UserForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('user_list')
-        return render(request, 'user_create.html', {'form': form})
+#     def post(self, request):
+#         form = UserForm(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('user_list')
+#         return render(request, 'user_create.html', {'form': form})
 
-class UserUpdateView(View):
-    def get(self, request, user_id):
-        user = get_object_or_404(UserInfo, id=user_id)
-        form = UserForm(instance=user)
-        return render(request, 'user_update.html', {'form': form, 'user': user})
+# class UserUpdateView(View):
+#     def get(self, request, user_id):
+#         user = get_object_or_404(UserInfo, id=user_id)
+#         form = UserForm(instance=user)
+#         return render(request, 'user_update.html', {'form': form, 'user': user})
 
-    def post(self, request, user_id):
-        user = get_object_or_404(UserInfo, id=user_id)
-        form = UserForm(request.POST, instance=user)
-        if form.is_valid():
-            form.save()
-            return redirect('user_list')
-        return render(request, 'user_update.html', {'form': form, 'user': user})
+#     def post(self, request, user_id):
+#         user = get_object_or_404(UserInfo, id=user_id)
+#         form = UserForm(request.POST, instance=user)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('user_list')
+#         return render(request, 'user_update.html', {'form': form, 'user': user})
 
-class UserDeleteView(View):
-    def get(self, request, user_id):
-        user = get_object_or_404(UserInfo, id=user_id)
-        return render(request, 'user_delete.html', {'user': user})
+# class UserDeleteView(View):
+#     def get(self, request, user_id):
+#         user = get_object_or_404(UserInfo, id=user_id)
+#         return render(request, 'user_delete.html', {'user': user})
 
-    def post(self, request, user_id):
-        user = get_object_or_404(UserInfo, id=user_id)
-        user.delete()
-        return redirect('user_list')
+#     def post(self, request, user_id):
+#         user = get_object_or_404(UserInfo, id=user_id)
+#         user.delete()
+#         return redirect('user_list')
 
-class AccountListView(View):
-    def get(self, request):
-        accounts = AccountInfo.objects.all()
-        return render(request, 'account_list.html', {'accounts': accounts})
+# class AccountListView(View):
+#     def get(self, request):
+#         accounts = AccountInfo.objects.all()
+#         return render(request, 'account_list.html', {'accounts': accounts})
 
-class RoleListView(View):
-    def get(self, request):
-        roles = Role.objects.all()
-        return render(request, 'role_list.html', {'roles': roles})
+# class RoleListView(View):
+#     def get(self, request):
+#         roles = Role.objects.all()
+#         return render(request, 'role_list.html', {'roles': roles})
 
 
 def login_view(request):
@@ -93,3 +95,49 @@ def signup_view(request):
         return redirect('login')
 
     return render(request,'signup.html')
+
+def customer_signup_view(request):
+    if request.method == 'POST':
+        form = CustomerSignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('customer_dashboard')
+    else:
+        form = CustomerSignUpForm()
+        # first_name = request.POST['firstname']
+        # last_name = request.POST['lastname']
+        # username = request.POST['username']
+        # email = request.POST['email']
+        # password = request.POST['password']
+        # sex = request.POST['selected']
+        # date_of_birth = request.POST['dateofbirth']
+        # user = User.objects.create_user(first_name=first_name,last_name=last_name,username=username,emai=email,sex=sex,date_of_birth=date_of_birth,password=password)
+        # user.save()
+        # return redirect('login')
+
+    return render(request,'signup.html',{'form': form})
+
+def admin_signup_view(request):
+    if request.method == 'POST':
+        form = AdminSignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect('admin_dashboard')
+    else:
+        form = AdminSignUpForm()
+    return render(request, 'adminsignup.html', {'form': form})
+
+@login_required
+def customer_dashboard(request):
+    if not request.user.is_customer:
+        return redirect('admin_dashboard')
+    return render(request, 'customer-dashboard.html')
+
+@login_required
+def admin_dashboard(request):
+    if not request.user.is_admin:
+        return redirect('customer_dashboard')
+    return render(request, 'admin-dashboard.html')
+

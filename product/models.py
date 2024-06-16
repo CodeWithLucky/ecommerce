@@ -123,6 +123,16 @@ class ProductImage(models.Model):
     images = models.ImageField(upload_to='Gallery', null = True, blank= True)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
 
+class Maintenance(models.Model):
+    is_under_maintenance = models.BooleanField(default=False)
+
+    def __str__(self):
+        return "Site Under Maintenance" if self.is_under_maintenance else "Site Operational"
+    
+
+class History(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    
 
 
 
