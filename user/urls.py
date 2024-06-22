@@ -1,7 +1,7 @@
 from django.urls import path
 from . import admin
 from .views import (
-    login_view,signup_view,customer_signup_view,admin_signup_view,
+    login_view,customer_signup_view,admin_signup_view,
 )
 
 urlpatterns = [

@@ -219,3 +219,4 @@ def clear_history(request):
     return redirect('history')
 
 
+    

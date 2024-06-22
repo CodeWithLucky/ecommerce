@@ -1,18 +1,19 @@
 <div class="top-bar">
-  <div class="container">
-      <div class="row">
-          <ul class="top-bar-link top-bar-link-left">
-              <li><i class="fa fa-phone"></i> Call us:9849273636 </li>
-              <li><i class="fa fa-exchange"></i> Free Shipping for all Order of NRS. 5000</li>
-          </ul>
-          <ul class="top-bar-link top-bar-link-right dot">
-                                      <li><a href="{% url "cart" %}">Cart</a></li>
-                                      <li><a href="{% url "history" %}">History</a></li>
-                                      <li><a href="">Checkout</a></li>
-                                      <li><a href="">Contact</a></li>
-                                                          <li><a href="{% url "login" %}">Login</a></li>
-                  <li><a href="{% url "customer_signup" %}">Register Now</a></li>
-                              </ul>
-      </div>
-  </div>
+<div class="container">
+    <div class="row">
+        <ul class="top-bar-link top-bar-link-left">
+            <li><i class="fa fa-calendar"></i> &nbsp; {{ nepali_date }}</li>
+            <li><i class="fa fa-phone"></i> Call us:9849273636 </li>
+            <li><i class="fa fa-exchange"></i> Free Shipping for all Order of NRS. 5000</li>
+        </ul>
+        <ul class="top-bar-link top-bar-link-right dot">
+                                    <li><a href="{% url "cart" %}">Cart</a></li>
+                                    <li><a href="{% url "history" %}">History</a></li>
+                                    <li><a href="">Checkout</a></li>
+                                    <li><a href="">Contact</a></li>
+                                    <li><a href="{% url "login" %}">Login</a></li>
+                <li><a href="{% url "customer_signup" %}">Register Now</a></li>
+        </ul>
+    </div>
+</div>
 </div>

@@ -72,15 +72,14 @@ def login_view(request):
         password = request.POST['password']
         print(email,password)  
         user = authenticate(email=email, password=password)
-        if user is not None:
-            
+        if user is not None:            
             login(request, user)
             return redirect('index')
         else:
-            return render(request, 'sign-in.html', {'error': 'Email or Password is incorrect'})              
+            return render(request, 'login.html', {'error': 'Email or Password is incorrect'})              
     return render(request, 'login.html')
     
-def signup_view(request):
+def customer_signup_view(request):
     if request.method == 'POST':
         first_name = request.POST['firstname']
         last_name = request.POST['lastname']
@@ -96,27 +95,27 @@ def signup_view(request):
 
     return render(request,'signup.html')
 
-def customer_signup_view(request):
-    if request.method == 'POST':
-        form = CustomerSignUpForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            return redirect('customer_dashboard')
-    else:
-        form = CustomerSignUpForm()
-        # first_name = request.POST['firstname']
-        # last_name = request.POST['lastname']
-        # username = request.POST['username']
-        # email = request.POST['email']
-        # password = request.POST['password']
-        # sex = request.POST['selected']
-        # date_of_birth = request.POST['dateofbirth']
-        # user = User.objects.create_user(first_name=first_name,last_name=last_name,username=username,emai=email,sex=sex,date_of_birth=date_of_birth,password=password)
-        # user.save()
-        # return redirect('login')
+# def customer_signup_view(request):
+#     if request.method == 'POST':
+#         form = CustomerSignUpForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request, user)
+#             return redirect('customer_dashboard')
+#     else:
+#         form = CustomerSignUpForm()
+#         # first_name = request.POST['firstname']
+#         # last_name = request.POST['lastname']
+#         # username = request.POST['username']
+#         # email = request.POST['email']
+#         # password = request.POST['password']
+#         # sex = request.POST['selected']
+#         # date_of_birth = request.POST['dateofbirth']
+#         # user = User.objects.create_user(first_name=first_name,last_name=last_name,username=username,emai=email,sex=sex,date_of_birth=date_of_birth,password=password)
+#         # user.save()
+#         # return redirect('login')
 
-    return render(request,'signup.html',{'form': form})
+#     return render(request,'signup.html',{'form': form})
 
 def admin_signup_view(request):
     if request.method == 'POST':
